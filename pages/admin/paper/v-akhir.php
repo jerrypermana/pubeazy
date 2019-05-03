@@ -176,8 +176,8 @@ if ($_SESSION['group_session'] == 'admin') {
                                                             <label class="col-sm-2 control-label">File</label>
                                                             <label class="col-sm-1 control-label">:</label>
                                                             <button type="button" class="btn btn-primary btn-sm" data-target="#myModal" data-toggle="modal"><i class="fa fa-file-o"></i> Payment Proofs</button>
-                                                            <button type="button" class="btn btn-warning btn-sm" data-target="#myModalPaper" data-toggle="modal"><i class="fa fa-file-o"></i> Paper</button>
-                                                            <button type="button" class="btn btn-success btn-sm" data-target="#myModalFullPaper" data-toggle="modal"><i class="fa fa-file-o"></i> Full Paper</button>
+                                                            <a href="../repository/<?php echo $row['file_paper']; ?>"><button type="button" class="btn btn-warning btn-sm"><i class="fa fa-file-o"></i> Paper</button></a>
+                                                            <a href="../repository/<?php echo $row['file_fullpaper']; ?>"><button type="button" class="btn btn-success btn-sm"><i class="fa fa-file-o"></i> Full Paper</button></a>
                                                             <!-- Modal Payment-->
                                                             <div id="myModal" class="modal fade" role="dialog">
                                                                 <div class="modal-dialog modal-lg">
@@ -201,51 +201,6 @@ if ($_SESSION['group_session'] == 'admin') {
                                                                 </div>
                                                             </div>
 
-                                                            <!-- Modal Paper -->
-                                                            <div id="myModalPaper" class="modal fade" role="dialog">
-                                                                <div class="modal-dialog modal-lg">
-
-                                                                    <!-- Modal content-->
-                                                                    <div class="modal-content">
-                                                                        <div class="modal-header">
-                                                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                                            <h4 class="modal-title">View Full Paper</h4>
-                                                                        </div>
-                                                                        <div class="modal-body">
-
-                                                                            <embed src="../repository/<?php echo $row['file_paper']; ?>" frameborder="0" width="100%" height="400px">
-
-                                                                            <div class="modal-footer">
-                                                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                                            </div>
-                                                                        </div>
-
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-                                                            <!-- Modal Full Paper -->
-                                                            <div id="myModalFullPaper" class="modal fade" role="dialog">
-                                                                <div class="modal-dialog modal-lg">
-
-                                                                    <!-- Modal content-->
-                                                                    <div class="modal-content">
-                                                                        <div class="modal-header">
-                                                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                                            <h4 class="modal-title">View Full Paper</h4>
-                                                                        </div>
-                                                                        <div class="modal-body">
-
-                                                                            <embed src="../repository/<?php echo $row['file_fullpaper']; ?>" frameborder="0" width="100%" height="400px">
-
-                                                                            <div class="modal-footer">
-                                                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                                            </div>
-                                                                        </div>
-
-                                                                    </div>
-                                                                </div>
-                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -258,17 +213,32 @@ if ($_SESSION['group_session'] == 'admin') {
                                                         </h4>
                                                     </div>
                                                     <div id="collapseThree" class="panel-collapse collapse in">
+                                                        <?php
 
-                                                    <div class="box-body">
-                                                                <label class="col-sm-2 control-label">Kuota</label>
-                                                                <div class="col-sm-3">
-                                                                    <input type="text" name="kuota" id='kuota' class="form-control" placeholder="Insert quota of participants">
-                                                                </div>
+                                                        $query_pj = "SELECT * FROM paper_jadwal as pj 
+                                                        LEFT JOIN paper as p ON pj.paper_id=p.paper_id
+                                                        WHERE p.paper_id='$paper_id'";
+                                                        $hasil_pj = mysqli_query($konek, $query_pj);
+                                                        $row_pj = mysqli_fetch_array($hasil_pj);
+
+                                                        ?>
+                                                        <div class="box-body">
+                                                            <label class="col-sm-2 control-label">Kuota</label>
+                                                            <div class="col-sm-3">
+                                                                <input type="text" name="kuota" id='kuota' class="form-control" placeholder="Insert quota of participants" value='<?php echo $row_pj['kuota']; ?>'>
                                                             </div>
+                                                        </div>
                                                         <div class="box-body">
                                                             <label class="col-sm-2 control-label">Upload Full Upload</label>
                                                             <div class="col-sm-6">
                                                                 <select class="form-control" name='full_paper'>
+                                                                    <?php
+                                                                    if($row_pj['full_paper'] == '1'){
+                                                                       echo"<option value='$row_pj[full_paper]'>Valid</option>";
+                                                                    }else{
+                                                                        echo"<option value='$row_pj[full_paper]'>In Valid</option>";
+                                                                    }
+                                                                    ?>
                                                                     <option value=''>---- Status ----</option>
                                                                     <option value='1'>Valid</option>
                                                                     <option value='2'>Invalid </option>
@@ -280,22 +250,31 @@ if ($_SESSION['group_session'] == 'admin') {
                                                         <div class="box-body">
                                                             <label class="col-sm-2 control-label">Verification</label>
                                                             <div class="col-sm-6">
-                                                            <select class="form-control" name='v_akhir'>
-                                                                        <option value=''>---- Status ----</option>
-                                                                        <?php
-                                                                        $select_status = mysqli_query($konek, "SELECT * FROM status");
+                                                                <select class="form-control" name='v_akhir'>
+                                                                <?php
+                                                                    if($row_pj['v_akhir'] == '1'){
+                                                                       echo"<option value='$row_pj[v_akhir]'>Accepted</option>";
+                                                                    }elseif($row_pj['v_akhir'] == '2'){
+                                                                        echo"<option value='$row_pj[v_akhir]'>Reject</option>";
+                                                                    }else{
+                                                                        echo"<option value='$row_pj[v_akhir]'>Revision Required</option>";
+                                                                    }
+                                                                    ?>
+                                                                    <option value=''>---- Status ----</option>
+                                                                    <?php
+                                                                    $select_status = mysqli_query($konek, "SELECT * FROM status");
 
-                                                                        while ($row_stat = mysqli_fetch_array($select_status)) {
+                                                                    while ($row_stat = mysqli_fetch_array($select_status)) {
 
-                                                                            echo "<option value='$row_stat[status_id]'>$row_stat[status]</option>";
-                                                                        }
-                                                                        ?>
-                                                                    </select>
+                                                                        echo "<option value='$row_stat[status_id]'>$row_stat[status]</option>";
+                                                                    }
+                                                                    ?>
+                                                                </select>
                                                             </div>
                                                         </div>
 
-                                                        <input type="hidden" name="jadwal_id" value='<?php echo $row['jadwal_id']; ?>''>
-                                                        <input type='hidden' name='paper_id' value='<?php echo $row['paper_id']; ?>'>
+                                                            <input type="hidden" name="jadwal_id" value='<?php echo $row['jadwal_id']; ?>''>
+                                                            <input type="hidden" name='paper_id' value='<?php echo $row['paper_id']; ?>'>
 
                                                         <div class="box-footer">
                                                             <button type="cancel" class="btn btn-default">Cancel</button>
@@ -316,7 +295,7 @@ if ($_SESSION['group_session'] == 'admin') {
 
 
                                 <!-- form start -->
-                               
+
                                 <?php
                                 if (isset($_POST['update'])) {
 

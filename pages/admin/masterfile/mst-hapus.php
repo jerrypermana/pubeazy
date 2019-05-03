@@ -100,5 +100,22 @@ elseif (isset($_GET['ruangID'])) {
       location.replace("' . $base_url . '/index.php?p=mst-ruang)</script>';
   }
 }
+
+elseif (isset($_GET['speakID'])) {
+  $speakID = $_GET['speakID'];
+
+  $query = "delete from speakers where speaker_id='$speakID'";
+  $hapus_speak       = mysqli_query($konek,$query);
+
+
+ 
+  if ($hapus_speak) {
+      echo '<script>alert("Data Berhasil Di Hapus")
+      location.replace("' . $base_url . '/index.php?p=set-keynote-speakers")</script>';
+  } else {
+      echo '<script>alert("Data Gagal Di Hapus")
+      location.replace("' . $base_url . '/index.php?p=set-keynote-speakers)</script>';
+  }
+}
 ?>
 

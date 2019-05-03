@@ -43,20 +43,26 @@ if ($hitung == 0) {
 
                                 <table class="table table-condensed">
                                     <tr>
-                                        <th style="width: 20%; text-align: right;"><label>Nama Konferensi*<label></th>
+                                        <th style="width: 20%; text-align: right;"><label>Name Conference*<label></th>
                                         <th style="width: 2%">:</th>
                                         <th style="width: 78%"><input type="text" name="nama_konferensi" id='nama_konferensi' class="form-control" style="width: 90%" value='<?php echo $row['nama_konferensi']; ?>'>
                                         <input type="hidden" name="konferensi_id" class="form-control" style="width: 90%" value='<?php echo $conf_id; ?>'></th>
                                     </tr>
                                     <tr>
-                                        <th style="width: 20%; text-align: right;"><label>Penyelenggara*<label></th>
+                                        <th style="width: 20%; text-align: right;"><label>Organizer*<label></th>
                                         <th style="width: 2%">:</th>
                                         <th style="width: 78%"><input type="text" name="penyelenggara" id='penyelenggara' class="form-control" style="width: 90%" value='<?php echo $row['penyelenggara']; ?>'></th>
                                     </tr>
                                     <tr>
-                                            <th style="width: 20%; text-align: right;"><label>Tanggal Konferensi*<label></th>
+                                            <th style="width: 20%; text-align: right;"><label>Start Date Conference*<label></th>
                                             <th style="width: 2%">:</th>
-                                            <th style="width: 78%"><input type="date" name="tanggal" id='tanggal' class="form-control" style="width: 30%" value='<?php echo $row['tanggal']; ?>'></th>
+                                            <th style="width: 78%"><input type="date" name="start_date" id='start_date' class="form-control" style="width: 30%" value='<?php echo $row['start_date']; ?>'></th>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <th style="width: 20%; text-align: right;"><label>End Date Conference*<label></th>
+                                            <th style="width: 2%">:</th>
+                                            <th style="width: 78%"><input type="date" name="end_date" id='end_date' class="form-control" style="width: 30%" value='<?php echo $row['end_date']; ?>''></th>
                                         </tr>
                                         <tr>
                                             <th style="width: 20%; text-align: right;"><label>Ruang*<label></th>
@@ -74,6 +80,23 @@ if ($hitung == 0) {
                                                 ?>
 
                                                 </select>
+                                        </tr>
+                                        <tr>
+                                            <th style="width: 20%; text-align: right;"><label>Show Dashboard*<label></th>
+                                            <th style="width: 2%">:</th>
+                                            <th style="width: 78%">
+                                        <?php
+                                        if($row['show_dashboard'] != '0'){
+                                            echo'<input type="radio" name="show" value="1" checked> Show Dashboard <br>
+                                               <input type="radio" name="show" value="0"> Hidden Dashboard';
+                                        }else{
+                                            echo'<input type="radio" name="show" value="1"> Show Dashboard <br>
+                                               <input type="radio" name="show" value="0" checked> Hidden Dashboard';
+
+                                        }
+
+                                        ?>
+                                               
                                         </tr>
 
 
@@ -115,8 +138,10 @@ if ($hitung == 0) {
                                 $conf_id                = $_POST['konferensi_id'];
                                 $nama_konferensi        = ucwords($_POST['nama_konferensi']);
                                 $penyelenggara          = ucwords($_POST['penyelenggara']);
-                                $tanggal                = $_POST['tanggal'];
+                                $start_date             = $_POST['start_date'];
+                                $end_date               = $_POST['end_date'];
                                 $ruang                  = $_POST['ruang'];
+                                $show                  = $_POST['show'];
                                 $tglubah                = date('Y-m-d');
 
 
@@ -125,8 +150,10 @@ if ($hitung == 0) {
 
                                 $q_update  = "UPDATE conference set nama_konferensi='$nama_konferensi ',
                                     penyelenggara='$penyelenggara',
-                                    tanggal='$tanggal',
+                                    start_date='$start_date',
+                                    end_date='$end_date',
                                     ruang_id='$ruang',
+                                    show_dashboard='$show',
                                     last_update='$tglubah'
                                     where konferensi_id='$conf_id'";
 

@@ -42,6 +42,7 @@ if ($_SESSION['group_session'] == 'presenter') {
         $jam            = $row_jadwal['jam'];
     } else {
         $tanggal_conf   = "Belum Di-Isi";
+        $end_conf   = "Belum Di-Isi";
         $jam            = "Belum Di-Isi";
     }
 
@@ -49,9 +50,12 @@ if ($_SESSION['group_session'] == 'presenter') {
               LEFT JOIN mst_keyword as mk ON pk.keyword_id=mk.keyword_id WHERE paper.paper_id='$row[paper_id]'");
 
     // $dataArray = [];
-    while ($rowKey = mysqli_fetch_assoc($select_keyword)) {
-        $resultKey[] = $rowKey['keyword'];
-    }
+   
+        while ($rowKey = mysqli_fetch_assoc($select_keyword)) {
+            $resultKey[] = $rowKey['keyword'];
+        }
+   
+    
 
     $select_subject = mysqli_query($konek, "SELECT ms.subject_id, ms.subject as subject FROM paper 
             LEFT JOIN paper_subject as ps ON paper.paper_id=ps.paper_id
@@ -87,7 +91,7 @@ if ($_SESSION['group_session'] == 'presenter') {
 
     if ($hitung == 0) {
         echo '<script>alert("Username Tidak Di Temukan")
-        location.replace("' . $base_url . '/index.php?p=dashboard-presenter")</script>';
+        location.replace("' . $base_url . '/index.php?p=add-paper")</script>';
     }
 
 

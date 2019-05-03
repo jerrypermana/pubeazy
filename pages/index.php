@@ -21,6 +21,8 @@ if (isset($_GET["p"])) {
     include 'admin/konferensi/add-konferensi.php';
   } elseif ($id == "edit-konferensi") {
     include 'admin/konferensi/edit-konferensi.php';
+  } elseif ($id == "delete-conf") {
+    include 'admin/konferensi/delete-conf.php';
   } elseif ($id == "v-paper") {
     include 'admin/paper/v-paper.php';
   } elseif ($id == "list-jadwal") {
@@ -63,18 +65,17 @@ if (isset($_GET["p"])) {
     include 'admin/masterfile/mst-edit-admin.php';
   } elseif ($id == "save-admin") {
     include 'admin/masterfile/save-admin.php';
-  }  elseif ($id == "mst-ruang") {
+  } elseif ($id == "mst-ruang") {
     include 'admin/masterfile/mst-ruang.php';
-  }  elseif ($id == "mst-edit-ruang") {
+  } elseif ($id == "mst-edit-ruang") {
     include 'admin/masterfile/mst-edit-ruang.php';
-  }elseif ($id == "mst-hapus") {
+  } elseif ($id == "mst-hapus") {
     include 'admin/masterfile/mst-hapus.php';
   }
   //MODUL PELAPORAN//
   elseif ($id == "rep-presenter") {
     include 'admin/reporting/rep-presenter.php';
-  }
-  elseif ($id == "rep-peserta") {
+  } elseif ($id == "rep-peserta") {
     include 'admin/reporting/rep-peserta.php';
   }
   //ADMIN MASTER FILE//
@@ -84,8 +85,10 @@ if (isset($_GET["p"])) {
   //ADMIN SYSTEM SETTING//
   elseif ($id == "set-keynote-speakers") {
     include 'admin/system-setting/set-keynote-speakers.php';
-  }elseif ($id == "setting-loa") {
-    include 'admin/system-setting/setting-loa.php';
+  } elseif ($id == "add-speakers") {
+    include 'admin/system-setting/set-add-speakers.php';
+  } elseif ($id == "edit-speakers") {
+    include 'admin/system-setting/set-edit-speakers.php';
   }
   // START MODUL PRESENTER
   elseif ($id == "dashboard-presenter") {
@@ -104,6 +107,8 @@ if (isset($_GET["p"])) {
     include 'presenter/paper/pilih-jadwal.php';
   } elseif ($id == "add-jadwal") {
     include 'presenter/paper/add-jadwal.php';
+  }elseif ($id == "add-ppt") {
+    include 'presenter/paper/add-ppt.php';
   } elseif ($id == "edit-presenter") {
     include 'presenter/paper/edit-presenter.php';
   } elseif ($id == "hapus") {

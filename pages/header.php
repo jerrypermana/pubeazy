@@ -156,11 +156,11 @@ if (!isset($_SESSION['email'])) {
                                         <i class="fa fa-check-square"></i> <span>Verifikasi Akhir</span>
                                     </a>
                                 </li>
-                                <li>
+                                <!-- <li>
                                     <a href="<?php echo $base_url; ?>/index.php?p=list-jadwal">
                                         <i class="fa fa-calendar-check-o"></i> <span>List Jadwal</span>
                                     </a>
-                                </li>
+                                </li> -->
                             </ul>
                         </li>
                         <li class="treeview">
@@ -234,7 +234,7 @@ if (!isset($_SESSION['email'])) {
                                 </span>
                             </a>
                             <ul class="treeview-menu">
-                            <li>
+                            <!-- <li>
                                     <a href="<?php echo $base_url; ?>/index.php?p=rep-loi">
                                         <i class="fa fa-line-chart"></i> <span>Statistik</span>
                                     </a>
@@ -249,7 +249,7 @@ if (!isset($_SESSION['email'])) {
                                     <a href="<?php echo $base_url; ?>/index.php?p=rep-loi">
                                         <i class="fa fa-file-o"></i> <span>Letter Of Accepted (LOA)</span>
                                     </a>
-                                </li>
+                                </li> -->
                                 <li>
                                     <a href="<?php echo $base_url; ?>/index.php?p=rep-presenter">
                                         <i class="fa fa-file-o"></i> <span>Presenter</span>
@@ -278,12 +278,17 @@ if (!isset($_SESSION['email'])) {
                                         <i class="fa fa-bullhorn"></i> <span>Keynote Speakers</span>
                                     </a>
                                 </li>
-                                <li>
+                                <!-- <li>
                                     <a href="<?php echo $base_url; ?>/index.php?p=setting-loa">
                                         <i class="fa fa-envelope"></i> <span>LOA</span>
                                     </a>
+<<<<<<< Updated upstream
                                 </li>
 
+=======
+                                </li> -->
+                                
+>>>>>>> Stashed changes
                             </ul>
                         </li>
                         <!-- CLOSE SYSTEM SETTING -->
@@ -329,6 +334,11 @@ if (!isset($_SESSION['email'])) {
                     <li>
                         <a href="<?php echo $base_url; ?>/index.php?p=add-jadwal">
                             <i class="fa fa-calendar-plus-o"></i> <span>Add Schedule</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?php echo $base_url; ?>/index.php?p=add-ppt">
+                            <i class="fa fa-file-powerpoint-o"></i> <span>Upload PPT</span>
                         </a>
                     </li>
 

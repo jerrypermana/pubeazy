@@ -31,7 +31,8 @@ if ($_SESSION['group_session'] == 'presenter') {
                                 <?php
 
                                 $paper_id = $_GET['id'];
-                                $query = "SELECT paper.id_presenter,paper.paper_id,paper.judul,paper.abstrak,paper.komentar, mr.nama_ruang,conf.konferensi_id,conf.nama_konferensi,conf.tanggal,conf.penyelenggara, paper.file_paper FROM paper LEFT JOIN paper_keyword as pk ON paper.paper_id=pk.paper_id
+                                $query = "SELECT paper.id_presenter,paper.paper_id,paper.judul,paper.abstrak,paper.komentar, mr.nama_ruang,conf.konferensi_id,
+                                conf.nama_konferensi,conf.start_date,conf.end_date,conf.penyelenggara, paper.file_paper FROM paper LEFT JOIN paper_keyword as pk ON paper.paper_id=pk.paper_id
                                 LEFT JOIN mst_keyword as mk ON pk.keyword_id=mk.keyword_id
                                 LEFT JOIN conference as conf ON paper.konferensi_id=conf.konferensi_id
                                 LEFT JOIN mst_ruang as mr ON conf.ruang_id=mr.ruang_id
@@ -41,7 +42,7 @@ if ($_SESSION['group_session'] == 'presenter') {
                                 $hitung = mysqli_num_rows($hasil);
 
 
-                                $tanggal_conf = date('d-m-Y', strtotime($row['tanggal']));
+                                $tanggal_conf = date('d-m-Y', strtotime($row['start_date']));
 
                                 $select_keyword = mysqli_query($konek, "SELECT mk.keyword_id, mk.keyword as keyword FROM paper LEFT JOIN paper_keyword as pk ON paper.paper_id=pk.paper_id
                                           LEFT JOIN mst_keyword as mk ON pk.keyword_id=mk.keyword_id WHERE paper.paper_id='$paper_id'");

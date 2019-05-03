@@ -20,7 +20,7 @@ if ($_SESSION['group_session'] == 'presenter') {
     LEFT JOIN mst_ruang as mr ON conf.ruang_id=mr.ruang_id
     LEFT JOIN status ON p.v_paper=status.status_id
     LEFT JOIN loi ON p.paper_id=loi.paper_id
-    WHERE pre.id_presenter='$id_presenter'";
+    WHERE tp.v_transfer='1' AND pre.id_presenter='$id_presenter'";
     $hasil = mysqli_query($konek, $query);
     $row = mysqli_fetch_array($hasil);
     $hitung = mysqli_num_rows($hasil);
@@ -72,7 +72,7 @@ if ($_SESSION['group_session'] == 'presenter') {
 
     if ($hitung == 0) {
         echo '<script>alert("Username Tidak Di Temukan")
-        location.replace("' . $base_url . '/index.php?p=dashboard-presenter")</script>';
+        location.replace("' . $base_url . '/index.php?p=pre-list-paper")</script>';
     }
 
 
@@ -213,6 +213,8 @@ if ($_SESSION['group_session'] == 'presenter') {
 
                                                     ?>
                                                 </select>
+
+                                                <input type="hidden" name="conf_id" id='conf_id' class="form-control" value=' <?php echo $row['konferensi_id']; ?>'>
                                             </div>
                                         </div>
                                         
@@ -266,7 +268,15 @@ if ($_SESSION['group_session'] == 'presenter') {
                         <?php
 
                         if (isset($_POST['submit'])) {
+                            
+                            $date       = $_POST['date'];
+                            $jam        = $_POST['jam'];
+                            $select_jadwal = "SELECT * FROM paper_jadwal where date='$date' AND jam_id='$jam'";
+                            $jadwal         = mysqli_query($konek, $select_jadwal);
+                            $r_jadwal       = mysqli_fetch_array($jadwal);
+                            $h_jadwal       = mysqli_num_rows($jadwal);
 
+                            if($h_jadwal != '1'){
                             $paper_id   = $_POST['paper_id'];
                             $jam        = $_POST['jam'];
                             $date       = $_POST['date'];
@@ -287,6 +297,10 @@ if ($_SESSION['group_session'] == 'presenter') {
                             } else {
                                 echo '<script>alert("Add Schedule Failed!")</script>';
                             }
+                            }else{
+
+                                echo '<script>alert("the schedule has been used")</script>';
+                        }
                         }
                         ?>
 

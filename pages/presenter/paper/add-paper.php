@@ -29,7 +29,7 @@ if ($_SESSION['group_session'] == 'presenter') {
 
                                 <div class="col-sm-8">
                                     <select class="form-control conf" name='conf_id' id="conf_id">
-
+                                    <option value='0'>---- Select Your Conference ---</option>
                                         <?php
                                         $select_conf = mysqli_query($konek, "SELECT * FROM conference
                                         LEFT JOIN mst_ruang as mr ON conference.ruang_id=mr.ruang_id");
@@ -39,6 +39,18 @@ if ($_SESSION['group_session'] == 'presenter') {
                                             echo "<option value='$row[konferensi_id]'>$row[nama_konferensi]</option>";
                                         }
                                         ?>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-2 control-label">Type</label>
+
+                                <div class="col-sm-8">
+                                    <select class="form-control conf" name='type_pre' id="type_pre">
+                                            <option value='0'>---- Select Your Type Conference---</option>
+                                            <option value='1'>Oral Presentation</option>
+                                            <option value='2'>Poster Presentation</option>
                                     </select>
                                 </div>
                             </div>
@@ -112,6 +124,7 @@ if ($_SESSION['group_session'] == 'presenter') {
                                 <div class="col-sm-5">
                                     <label for="exampleInputFile">Masukkan File Paper</label>
                                     &nbsp &nbsp <input type="file" name='file' id='file' id="exampleInputFile">
+                                    <p class="help-block"> Allowed file extension : .doc, .docx or .pdf.</p>
                                     <p class="help-block">Maximum 4 Mb.</p>
                                 </div>
 
@@ -146,16 +159,17 @@ if ($_SESSION['group_session'] == 'presenter') {
                 $v_paper        = '2';
                 $loa            = '0';
                 $lol            = '0';
+                $type_pre       = $_POST['type_pre'];
                 $tglinput = date('Y-m-d');
                 $tglubah = date('Y-m-d');
 
-                $ekstensi_diperbolehkan    = array('pdf');
+                $ekstensi_diperbolehkan    = array('pdf', 'doc', 'docx');
                 //$nama = 'Abstrak_' . $tglinput . '_' . $member_id . '.pdf';
                 $nama = $_FILES['file']['name'];
                 $x = explode('.', $nama);
                 $ekstensi = strtolower(end($x));
 
-                $nama_file = 'Abstrak_' . $tgl . '_' . $member_id . '.' .$ekstensi .'';
+                $nama_file = 'Abstrak_' . $tglinput . '_' . $member_id . '.' .$ekstensi .'';
                 $ukuran    = $_FILES['file']['size'];
                 $file_tmp = $_FILES['file']['tmp_name'];
 
@@ -164,8 +178,8 @@ if ($_SESSION['group_session'] == 'presenter') {
                     if ($ukuran < 4485760) {
                         move_uploaded_file($file_tmp, '../repository/' . $nama_file);
 
-                        $query_paper  = "INSERT INTO paper (konferensi_id,id_presenter, judul, abstrak, file_paper, v_paper, input_date, last_update)
-                                        VALUES('$conf_id','$id_presenter', '$judul', '$abstrak', '$nama_file ','$v_paper', '$tglinput', '$tglubah')";
+                        $query_paper  = "INSERT INTO paper (konferensi_id,id_presenter, type_presentation,judul, abstrak, file_paper, v_paper, input_date, last_update)
+                                        VALUES('$conf_id','$id_presenter', '$type_pre','$judul', '$abstrak', '$nama_file ','$v_paper', '$tglinput', '$tglubah')";
 
                         // echo $query_paper;
 

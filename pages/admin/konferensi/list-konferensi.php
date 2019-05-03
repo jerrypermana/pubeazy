@@ -76,18 +76,26 @@ if ($_SESSION['group_session'] == 'admin') {
                 singleSelect: true,
                 columns: [{
                         field: 'nama_konferensi',
-                        title: 'Nama Konferensi',
+                        title: 'Name Conference',
                         width: '30%',
                         halign: 'center',
                         align: 'left',
                         sortable: false
                     },
                     {
-                        field: 'tanggal',
-                        title: 'Tanggal Konferensi',
+                        field: 'start_date',
+                        title: 'Start Date Conference',
                         align: 'center',
                         halign: 'center',
-                        width: '20%',
+                        width: '10%',
+                        sortable: true,
+                        formatter: tglIndo
+                    },{
+                        field: 'end_date',
+                        title: 'End Date Conference',
+                        align: 'center',
+                        halign: 'center',
+                        width: '10%',
                         sortable: true,
                         formatter: tglIndo
                     },
@@ -99,14 +107,27 @@ if ($_SESSION['group_session'] == 'admin') {
                         sortable: false
                     },
                     {
-                        field: 'input_date',
-                        title: 'Tanggal Data Masuk',
-                        align: 'center',
+                        field: 'show_dashboard',
+                        title: 'Show',
                         halign: 'center',
+                        align: 'center',
                         width: '10%',
                         sortable: true,
-                        formatter: tglIndo
+                        formatter: function(value) {
+                            if (value == '1') {
+                                status = "<span class='label label-success'>Show</span>";
+
+                            } else if(value == '0')  {
+                                status = "<span class='label label-warning'>Hidden</span>";
+
+                            } else{
+
+                                status = "<span class='label label-warning'>None</span>";
+                            }
+                            return status;
+                        }
                     },
+                   
                     {
                         field: 'konferensi_id',
                         title: 'SETTING',
@@ -114,7 +135,7 @@ if ($_SESSION['group_session'] == 'admin') {
                         halign: 'center',
                         width: '20%',
                         formatter: function(value, row) {
-                            return "<a href='<?php echo $base_url; ?>/index.php?p=edit-konferensi&id=" + value + "''><button type='button' class='btn btn-default'><i class='fa fa-edit'></i></button></a>&nbsp<a href='<?php echo $base_url; ?>/index.php?id=delete-bibliography&iditem=" + value + "'onClick=\"return confirm('Apakah anda yakin akan menghapus data item " + row.title + " ?')\"><button type='button' class='btn btn-default'><i class='fa fa-trash'></i></button></a>";
+                            return "<a href='<?php echo $base_url; ?>/index.php?p=edit-konferensi&id=" + value + "''><button type='button' class='btn btn-default'><i class='fa fa-edit'></i></button></a>&nbsp<a href='<?php echo $base_url; ?>/index.php?p=delete-conf&confID=" + value + "'onClick=\"return confirm('Apakah anda yakin akan menghapus data item " + row.nama_konferensi + " ?')\"><button type='button' class='btn btn-default'><i class='fa fa-trash'></i></button></a>";
 
                         }
                     }

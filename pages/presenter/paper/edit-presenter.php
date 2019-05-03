@@ -19,7 +19,7 @@ if ($_SESSION['group_session'] == 'presenter') {
 
     if ($hitung == 0) {
         echo '<script>alert("ID Anggota Tidak Di Temukan")
-             location.replace("' . $base_url . '../index.php?id=dashboard")</script>';
+             location.replace("' . $base_url . '../index.php?id=dashboard-presenter")</script>';
     }
     ?>
     </br>

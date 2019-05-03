@@ -8,7 +8,8 @@ include 'config/koneksi.php';
 $query = mysqli_query($konek, "SELECT * FROM conference WHERE show_dashboard='1' ");
 $row = mysqli_fetch_array($query);
 
-$tanggal_conf = date('d F Y', strtotime($row['tanggal']));
+$start_conf = date('d', strtotime($row['start_date']));
+$end_conf = date('d F Y', strtotime($row['end_date']));
 ?>
 <br>
 <section id="intro">
@@ -16,9 +17,9 @@ $tanggal_conf = date('d F Y', strtotime($row['tanggal']));
         <h1 class="mb-4 pb-0">Pub<span>Eazy</span> CONFERENCE</h1>
         <div class="col-lg-8" align="center">
             <p> <?php echo $row['nama_konferensi']; ?></p>
-            <span style="color: white;"> <?php echo $tanggal_conf; ?> , </span><span style="color: white;"><?php echo $row['penyelenggara']; ?></span>
-        <a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="venobox play-btn mb-4" data-vbtype="video" data-autoplay="true"></a>
-        <a href="<?php echo $base_url; ?>/url.php?p=registrasi-peserta&konferensi_id=<?php echo $row['konferensi_id']; ?>" class="about-btn scrollto">Registrasi Peserta</a>
+            <span style="color: white;"> <?php echo $start_conf . ' - ' . $end_conf; ?> , </span><span style="color: white;"><?php echo $row['penyelenggara']; ?></span>
+            <a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="venobox play-btn mb-4" data-vbtype="video" data-autoplay="true"></a>
+            <a href="<?php echo $base_url; ?>/url.php?p=register" class="about-btn scrollto">Registrasi Peserta</a>
         </div>
     </div>
 </section>
@@ -56,104 +57,39 @@ $tanggal_conf = date('d F Y', strtotime($row['tanggal']));
         <div class="container">
             <div class="section-header">
                 <h2>Event Speakers</h2>
-                <p>Here are some of our speakers</p>
+                <!-- <p>Here are some of our speakers</p> -->
             </div>
-
             <div class="row">
-                <div class="col-lg-4 col-md-6">
-                    <div class="speaker">
-                        <img src="assets-event/img/speakers/1.jpg" alt="Speaker 1" class="img-fluid">
-                        <div class="details">
-                            <h3><a href="speaker-details.html">Brenden Legros</a></h3>
-                            <p>Quas alias incidunt</p>
-                            <div class="social">
-                                <a href=""><i class="fa fa-twitter"></i></a>
-                                <a href=""><i class="fa fa-facebook"></i></a>
-                                <a href=""><i class="fa fa-google-plus"></i></a>
-                                <a href=""><i class="fa fa-linkedin"></i></a>
+            <?php
+            $select = mysqli_query($konek, "SELECT * FROM speakers order by sequance ASC ");
+            while ($row_speak = mysqli_fetch_array($select)) {
+
+                if ($row_speak['image_speaker'] != NULL) {
+                    $photo = '<img src="files/speakers/' . $row_speak['image_speaker'] . '" alt="Speaker 1" class="img-fluid">';
+                } else {
+                    $photo = '<img src="files/presenter/presenter.jpg" alt="Speaker 1" class="img-fluid">';
+                }
+
+
+                echo '<div class="col-lg-3 col-md-6">
+                        <div class="speaker" style="max-width: 100%; height: 100%; align: center;">
+                            ' . $photo . '
+                            <div class="details">
+                                <h3><a href="speaker-details.html">' . $row_speak['speaker_name'] . '</a></h3>
+                                <p>' . $row_speak['institution'] . '</p>
+                                
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="speaker">
-                        <img src="assets-event/img/speakers/2.jpg" alt="Speaker 2" class="img-fluid">
-                        <div class="details">
-                            <h3><a href="speaker-details.html">Hubert Hirthe</a></h3>
-                            <p>Consequuntur odio aut</p>
-                            <div class="social">
-                                <a href=""><i class="fa fa-twitter"></i></a>
-                                <a href=""><i class="fa fa-facebook"></i></a>
-                                <a href=""><i class="fa fa-google-plus"></i></a>
-                                <a href=""><i class="fa fa-linkedin"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="speaker">
-                        <img src="assets-event/img/speakers/3.jpg" alt="Speaker 3" class="img-fluid">
-                        <div class="details">
-                            <h3><a href="speaker-details.html">Cole Emmerich</a></h3>
-                            <p>Fugiat laborum et</p>
-                            <div class="social">
-                                <a href=""><i class="fa fa-twitter"></i></a>
-                                <a href=""><i class="fa fa-facebook"></i></a>
-                                <a href=""><i class="fa fa-google-plus"></i></a>
-                                <a href=""><i class="fa fa-linkedin"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="speaker">
-                        <img src="assets-event/img/speakers/4.jpg" alt="Speaker 4" class="img-fluid">
-                        <div class="details">
-                            <h3><a href="speaker-details.html">Jack Christiansen</a></h3>
-                            <p>Debitis iure vero</p>
-                            <div class="social">
-                                <a href=""><i class="fa fa-twitter"></i></a>
-                                <a href=""><i class="fa fa-facebook"></i></a>
-                                <a href=""><i class="fa fa-google-plus"></i></a>
-                                <a href=""><i class="fa fa-linkedin"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="speaker">
-                        <img src="assets-event/img/speakers/5.jpg" alt="Speaker 5" class="img-fluid">
-                        <div class="details">
-                            <h3><a href="speaker-details.html">Alejandrin Littel</a></h3>
-                            <p>Qui molestiae natus</p>
-                            <div class="social">
-                                <a href=""><i class="fa fa-twitter"></i></a>
-                                <a href=""><i class="fa fa-facebook"></i></a>
-                                <a href=""><i class="fa fa-google-plus"></i></a>
-                                <a href=""><i class="fa fa-linkedin"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="speaker">
-                        <img src="assets-event/img/speakers/6.jpg" alt="Speaker 6" class="img-fluid">
-                        <div class="details">
-                            <h3><a href="speaker-details.html">Willow Trantow</a></h3>
-                            <p>Non autem dicta</p>
-                            <div class="social">
-                                <a href=""><i class="fa fa-twitter"></i></a>
-                                <a href=""><i class="fa fa-facebook"></i></a>
-                                <a href=""><i class="fa fa-google-plus"></i></a>
-                                <a href=""><i class="fa fa-linkedin"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                    </div>';
+            }
+            ?>
+</div>
         </div>
 
+
+
     </section>
+   
 
 
     <!--==========================

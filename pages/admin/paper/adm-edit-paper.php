@@ -219,6 +219,13 @@ if ($_SESSION['group_session'] == 'admin') {
                                                             </div>
 
                                                             <div class="box-body">
+                                                                <label class="col-sm-2 control-label"></label>
+                                                                <div class="col-sm-6">
+                                                                <button type="button" class="btn btn-primary" data-target="#ModalAddSub" data-toggle="modal">Tambah Subject</button>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="box-body">
                                                                 <label class="col-sm-2 control-label">Verification</label>
                                                                 <div class="col-sm-6">
                                                                     <select class="form-control" name='v_paper'>

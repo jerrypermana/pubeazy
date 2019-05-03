@@ -1,11 +1,11 @@
 <?php
 
 
-if (isset($_GET['idpaper'])) {
-    $id = $_GET['idpaper'];
+if (isset($_GET['paper_id'])) {
+    $paper_id = $_GET['paper_id'];
 
 
-    $hapus          = mysqli_query($konek, "delete from paper where paper_id='$id'");
+    $hapus_paper          = mysqli_query($konek, "delete from paper where paper_id='$paper_id'");
 
 
 
@@ -18,7 +18,7 @@ if (isset($_GET['idpaper'])) {
     }
 }
 
-if (isset($_GET['idtrans'])) {
+elseif (isset($_GET['idtrans'])) {
     $id_trans = $_GET['idtrans'];
 
 

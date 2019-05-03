@@ -29,19 +29,24 @@ if ($_SESSION['group_session'] == 'admin') {
 
                                     <table class="table table-condensed">
                                         <tr>
-                                            <th style="width: 20%; text-align: right;"><label>Nama Konferensi*<label></th>
+                                            <th style="width: 20%; text-align: right;"><label>Name Conference*<label></th>
                                             <th style="width: 2%">:</th>
                                             <th style="width: 78%"><input type="text" name="nama_konferensi" id='nama_konferensi' class="form-control" style="width: 90%"></th>
                                         </tr>
                                         <tr>
-                                            <th style="width: 20%; text-align: right;"><label>Penyelenggara*<label></th>
+                                            <th style="width: 20%; text-align: right;"><label>Organizer*<label></th>
                                             <th style="width: 2%">:</th>
                                             <th style="width: 78%"><input type="text" name="penyelenggara" id='penyelenggara' class="form-control" style="width: 90%"></th>
                                         </tr>
                                         <tr>
-                                            <th style="width: 20%; text-align: right;"><label>Tanggal Konferensi*<label></th>
+                                            <th style="width: 20%; text-align: right;"><label>Start Date Conference*<label></th>
                                             <th style="width: 2%">:</th>
-                                            <th style="width: 78%"><input type="date" name="tanggal" id='tanggal' class="form-control" style="width: 30%"></th>
+                                            <th style="width: 78%"><input type="date" name="start_date" id='start_date' class="form-control" style="width: 30%"></th>
+                                        </tr>
+                                        <tr>
+                                            <th style="width: 20%; text-align: right;"><label>End Date Conference*<label></th>
+                                            <th style="width: 2%">:</th>
+                                            <th style="width: 78%"><input type="date" name="end_date" id='end_date' class="form-control" style="width: 30%"></th>
                                         </tr>
                                         <tr>
                                             <th style="width: 20%; text-align: right;"><label>Ruang*<label></th>
@@ -58,6 +63,14 @@ if ($_SESSION['group_session'] == 'admin') {
                                                 ?>
 
                                                 </select>
+                                        </tr>
+
+                                        <tr>
+                                            <th style="width: 20%; text-align: right;"><label>Show Dashboard*<label></th>
+                                            <th style="width: 2%">:</th>
+                                            <th style="width: 78%">
+                                               <input type="radio" name="show" value='1'> Show Dashboard <br>
+                                               <input type="radio" name="show" value='0'> Hidden Dashboard
                                         </tr>
 
                                         <tr>
@@ -99,18 +112,20 @@ if ($_SESSION['group_session'] == 'admin') {
 
                                                     $nama_konferensi        = ucwords($_POST['nama_konferensi']);
                                                     $penyelenggara          = ucwords($_POST['penyelenggara']);
-                                                    $tanggal                = $_POST['tanggal'];
+                                                    $start_date             = $_POST['start_date'];
+                                                    $end_date               = $_POST['end_date'];
                                                     $ruang                  = $_POST['ruang'];
+                                                    $show                  = $_POST['show'];
                                                     $tglinput               = date('Y-m-d');
                                                     $tglubah                = date('Y-m-d');
 
 
 
-                                                    $query_konferensi = "INSERT INTO conference (nama_konferensi, penyelenggara,tanggal,ruang_id, input_date, last_update)
-                                        VALUES('$nama_konferensi', '$penyelenggara','$tanggal','$ruang','$tglinput', '$tglubah')";
+                                                    $query_konferensi = "INSERT INTO conference (nama_konferensi, penyelenggara,start_date,end_date,ruang_id, show_dashboard ,input_date, last_update)
+                                        VALUES('$nama_konferensi', '$penyelenggara','$start_date','$end_date','$ruang','$show','$tglinput', '$tglubah')";
 
                                                     $insert_conference = mysqli_query($konek, $query_konferensi);
-
+                                                    // echo $query_konferensi;
                                                     if ($insert_conference) {
                                                         echo '<script>alert("Nama Konferensi Berhasil di Tambahkan")
                                     location.replace("' . $base_url . '/index.php?p=list-konferensi")</script>';
