@@ -11,7 +11,7 @@ if ($_SESSION['group_session'] == 'peserta') {
     <?php
 
     $transfer_id   = $_GET['id'];
-    $query      = "SELECT tp.transfer_id,p.id_peserta,p.member_id,p.realname,conf.nama_konferensi,conf.penyelenggara,pk.nama_paket,pk.biaya,tp.v_transfer,mr.nama_ruang,conf.tanggal,
+    $query      = "SELECT tp.transfer_id,p.id_peserta,p.member_id,p.realname,conf.nama_konferensi,conf.penyelenggara,pk.nama_paket,pk.biaya,tp.v_transfer,mr.nama_ruang,conf.start_date,
     tp.transfer_id,tp.nama_transfer,tp.jumlah_transfer,tp.kode_bank,tp.tgl_transfer,tp.v_transfer,ab.nama_bank,ab.atas_nama,ab.rekening
 FROM transaksi_peserta as tp
 LEFT JOIN peserta as p ON tp.id_peserta=p.id_peserta
@@ -35,7 +35,7 @@ WHERE tp.transfer_id='$transfer_id'";
 
     if ($hitung == 0) {
         echo '<script>alert("Paper Tidak Di temukan")
-             location.replace("' . $base_url . '../index.php?id=dashboard-peserta")</script>';
+             location.replace("' . $base_url . '/index.php?id=dashboard-peserta")</script>';
     }
     ?>
     </br>
@@ -100,7 +100,7 @@ WHERE tp.transfer_id='$transfer_id'";
 
                                             </th>
                                         </tr>
-                                       
+
                                         <tr>
                                             <th style="width: 20%; text-align: right;"><label>No Transaksi<label></th>
                                             <th style="width: 2%">:</th>
@@ -126,7 +126,7 @@ WHERE tp.transfer_id='$transfer_id'";
                                         <tr>
                                             <th style="width: 20%; text-align: right;"><label>Tanggal Transfer<label></th>
                                             <th style="width: 2%">:</th>
-                                            <th style="width: 78%"> 
+                                            <th style="width: 78%">
                                             <label><?php echo $tanggal_tf; ?><label>
 
                                             </th>
@@ -171,11 +171,11 @@ WHERE tp.transfer_id='$transfer_id'";
                                             <th style="width: 2%"></th>
                                             <th style="width: 78%"> </br></br></br></th>
                                         </tr>
-                                      
+
 
                                     </table>
                                 </form>
-                               
+
                             </div>
                         </div>
                     </div>
@@ -194,7 +194,7 @@ WHERE tp.transfer_id='$transfer_id'";
 
         </div>
         </div>
-       
+
 <?php
 }
 ?>

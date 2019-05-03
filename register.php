@@ -362,7 +362,7 @@
                                         $query  = "INSERT INTO peserta (member_id, realname, email, gender,address,instansi, no_hp,password, group_Session , input_date, last_update)
                                     VALUES('$member_id', '$nama', '$email','$gender','$address','$institution ','$hp', '$password','$group_pes','$tglinput', '$tglubah')";
 
-                                        //echo $query;
+                                        // echo $query;
                                         $insert_registrasi    = mysqli_query($konek, $query);
 
                                         if ($insert_registrasi) {

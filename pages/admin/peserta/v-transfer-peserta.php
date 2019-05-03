@@ -26,7 +26,7 @@ if ($_SESSION['group_session'] == 'admin') {
                                 <?php
 
                                 $transfer_id = $_GET['id'];
-                                $query = "SELECT tp.transfer_id,p.id_peserta,p.realname,p.member_id,conf.nama_konferensi,conf.penyelenggara,pk.nama_paket,pk.biaya,tp.v_transfer,mr.nama_ruang,conf.tanggal,
+                                $query = "SELECT tp.transfer_id,p.id_peserta,p.realname,p.member_id,conf.nama_konferensi,conf.penyelenggara,pk.nama_paket,pk.biaya,tp.v_transfer,mr.nama_ruang,conf.start_date,
                             tp.transfer_id,tp.nama_transfer,tp.jumlah_transfer,tp.file_bukti,tp.kode_bank,tp.tgl_transfer,tp.v_transfer,ab.nama_bank,ab.atas_nama,ab.rekening
                             FROM transaksi_peserta as tp
                             LEFT JOIN peserta as p ON tp.id_peserta=p.id_peserta
@@ -43,7 +43,7 @@ if ($_SESSION['group_session'] == 'admin') {
                                 $tanggal_conf = date('d-m-Y', strtotime($row['tanggal']));
 
                                 if ($hitung == 0) {
-                                    echo '<script>alert("Username Tidak Di Temukan")
+                                    echo '<script>alert("ID Transaksi Peserta Tidak Di Temukan")
 									location.replace("' . $base_url . '/index.php?p=dashboard")</script>';
                                 }
 
@@ -220,11 +220,11 @@ if ($_SESSION['group_session'] == 'admin') {
                                     $loi         = '1';
                                     $query_update  = "UPDATE transaksi_peserta set v_transfer='$v_transfer', last_update='$tgl' where transfer_id='$transfer_id '";
 
-                                   
+
 
 
                                     $update_transfer = mysqli_query($konek, $query_update);
-                                  
+
 
                                     if ($update_transfer) {
                                         echo '<script>alert("Bukti Transfer Berhasil di Verifikasi")

@@ -110,7 +110,7 @@ if (!isset($_SESSION['email'])) {
                     <li class="header">MENU</li>
                     <!-- START MODUL ADMIN -->
                     <?php
-                 
+
                     if ($_SESSION['group_session'] == 'admin') {
 
 
@@ -283,7 +283,7 @@ if (!isset($_SESSION['email'])) {
                                         <i class="fa fa-envelope"></i> <span>LOA</span>
                                     </a>
                                 </li>
-                                
+
                             </ul>
                         </li>
                         <!-- CLOSE SYSTEM SETTING -->
@@ -294,7 +294,7 @@ if (!isset($_SESSION['email'])) {
                                 <i class="fa fa-sign-out"></i> <span>Logout</span>
                             </a>
                         </li>
-                
+
 
                     <?php
                 } ?>
@@ -359,6 +359,29 @@ if (!isset($_SESSION['email'])) {
                         <a href="<?php echo $base_url; ?>/index.php?p=dashboard-peserta">
                             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                         </a>
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-list-ul"></i> <span>Konferensi</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+
+                            <li>
+                                <a href="<?php echo $base_url; ?>/index.php?p=konferensi">
+                                    <i class="fa fa-check"></i> <span>Pilih Konferensi</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="<?php echo $base_url; ?>/index.php?p=daftar-konferensi">
+                                    <i class="fa fa-bars"></i> <span>Daftar Konferensi</span>
+                                </a>
+                            </li>
+
+                        </ul>
                     </li>
                     <li>
                         <a href="<?php echo $base_url; ?>/index.php?p=list-transfer">
