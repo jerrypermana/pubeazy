@@ -2,7 +2,6 @@
     Intro Section
   ============================-->
 <?php
-
 include 'config/koneksi.php';
 
 $query = mysqli_query($konek, "SELECT * FROM conference WHERE show_dashboard='1' ");
@@ -10,6 +9,10 @@ $row = mysqli_fetch_array($query);
 
 $start_conf = date('d', strtotime($row['start_date']));
 $end_conf = date('d F Y', strtotime($row['end_date']));
+
+$homepage      = mysqli_query($konek, "SELECT * FROM homepage LIMIT 1");
+$data_homepage = mysqli_fetch_array($homepage);
+
 ?>
 <br>
 <section id="intro">
@@ -33,18 +36,16 @@ $end_conf = date('d F Y', strtotime($row['end_date']));
         <div class="container">
             <div class="row">
                 <div class="col-lg-6">
-                    <h2>About The Event</h2>
-                    <p>Sed nam ut dolor qui repellendus iusto odit. Possimus inventore eveniet accusamus error amet eius aut
-                        accusantium et. Non odit consequatur repudiandae sequi ea odio molestiae. Enim possimus sunt inventore in
-                        est ut optio sequi unde.</p>
+                    <h2><?php echo $data_homepage['about_title']; ?></h2>
+                    <p><?php echo $data_homepage['about_text']; ?></p>
                 </div>
                 <div class="col-lg-3">
-                    <h3>Where</h3>
-                    <p>Downtown Conference Center, New York</p>
+                    <h3><?php echo $data_homepage['location_title']; ?></h3>
+                    <p><?php echo $data_homepage['location_text']; ?></p>
                 </div>
                 <div class="col-lg-3">
-                    <h3>When</h3>
-                    <p>Monday to Wednesday<br>10-12 December</p>
+                    <h3><?php echo $data_homepage['when_title']; ?></h3>
+                    <p><?php echo $data_homepage['when_text']; ?></p>
                 </div>
             </div>
         </div>
@@ -77,7 +78,7 @@ $end_conf = date('d F Y', strtotime($row['end_date']));
                             <div class="details">
                                 <h3><a href="speaker-details.html">' . $row_speak['speaker_name'] . '</a></h3>
                                 <p>' . $row_speak['institution'] . '</p>
-                                
+
                             </div>
                         </div>
                     </div>';
@@ -89,7 +90,7 @@ $end_conf = date('d F Y', strtotime($row['end_date']));
 
 
     </section>
-   
+
 
 
     <!--==========================
