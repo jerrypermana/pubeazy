@@ -1,35 +1,95 @@
 <?php
+$sess_username = $_SESSION['group_session'];
+
 if ($_SESSION['group_session'] == 'admin') {
+
+     $cek_konferensi    = mysqli_query($konek, "SELECT * FROM conference");
+	$total_konferensi  = mysqli_num_rows($cek_konferensi);
+
+     $cek_paper         = mysqli_query($konek, "SELECT * FROM paper");
+	$total_paper       = mysqli_num_rows($cek_paper);
+
+     $cek_presenter     = mysqli_query($konek, "SELECT * FROM presenter");
+	$total_presenter   = mysqli_num_rows($cek_presenter);
+
+	$cek_peserta       = mysqli_query($konek, "SELECT * FROM peserta");
+	$total_peserta     = mysqli_num_rows($cek_peserta);
+
   ?>
 <!-- Content Header (Page header) -->
 <section class="content-header">
-    <h1>
+      <h1>
         Dashboard
-    </h1>
-
+        <small>Selamat datang <?php echo $sess_username; ?>!</small>
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Dashboard</li>
+      </ol>
 </section>
-</br>
-<div class="row">
 
-    <div class="box box-default">
-
-        <div class="box-body">
-
-
-        </div><!-- /.box-body -->
-
-    </div><!-- /.box -->
-</div><!-- /.col -->
-</br>
-</br>
-
-</div>
-
-
-
-
+<section class="content">
+     <div class="row">
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-aqua">
+            <div class="inner">
+              <h3><?php echo number_format($total_konferensi,0,',','.'); ?></h3>
+              <p>Total Konferensi</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-bag"></i>
+            </div>
+            <a href="<?php echo $base_url; ?>/index.php?p=list-konferensi" class="small-box-footer">Lihat daftar konferensi <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-green">
+            <div class="inner">
+              <h3><?php echo number_format($total_paper,0,',','.'); ?></h3>
+              <p>Total Paper</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-stats-bars"></i>
+            </div>
+            <a href="<?php echo $base_url; ?>/index.php?p=list-paper" class="small-box-footer">Lihat daftar paper <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-yellow">
+            <div class="inner">
+              <h3><?php echo number_format($total_presenter,0,',','.'); ?></h3>
+              <p>Total Presenter</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-person-add"></i>
+            </div>
+            <a href="#" class="small-box-footer">Lihat daftar presenter <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-red">
+            <div class="inner">
+              <h3><?php echo number_format($total_peserta,0,',','.'); ?></h3>
+              <p>Total Peserta</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-pie-graph"></i>
+            </div>
+            <a href="#" class="small-box-footer">Lihat daftar peserta <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <!-- ./col -->
+      </div>
+</section>
 
 <?php
 
 }
-?> 
+?>
