@@ -162,7 +162,7 @@ WHERE tp.transfer_id='$transfer_id'";
                                         <th style="width: 20%; text-align: right;"><label>Cetak Tiket<label></th>
                                         <th style="width: 2%">:</th>
                                         <th style="width: 38%">
-                                        <a href="'.$base_url.'/index.php?p=invoice-peserta"> <button type="button" class="btn btn-warning btn-sm">Cetak Tiket Konferensi</button></a>
+                                        <a href="'.$base_url.'/cetak.php?transfer_id='.$transfer_id.'" target="new"> <button type="button" class="btn btn-warning btn-sm">Cetak Tiket Konferensi</button></a>
                                     </tr>';
                                     }
                                     ?>
