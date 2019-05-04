@@ -38,7 +38,7 @@ if ($_SESSION['group_session'] == 'admin') {
               <p>Total Konferensi</p>
             </div>
             <div class="icon">
-              <i class="ion ion-bag"></i>
+              <i class="ion ion-chatboxes"></i>
             </div>
             <a href="<?php echo $base_url; ?>/index.php?p=list-konferensi" class="small-box-footer">Lihat daftar konferensi <i class="fa fa-arrow-circle-right"></i></a>
           </div>
@@ -52,7 +52,7 @@ if ($_SESSION['group_session'] == 'admin') {
               <p>Total Paper</p>
             </div>
             <div class="icon">
-              <i class="ion ion-stats-bars"></i>
+              <i class="ion ion-document"></i>
             </div>
             <a href="<?php echo $base_url; ?>/index.php?p=list-paper" class="small-box-footer">Lihat daftar paper <i class="fa fa-arrow-circle-right"></i></a>
           </div>
@@ -66,7 +66,7 @@ if ($_SESSION['group_session'] == 'admin') {
               <p>Total Presenter</p>
             </div>
             <div class="icon">
-              <i class="ion ion-person-add"></i>
+              <i class="ion ion-man"></i>
             </div>
             <a href="#" class="small-box-footer">Lihat daftar presenter <i class="fa fa-arrow-circle-right"></i></a>
           </div>
@@ -80,7 +80,7 @@ if ($_SESSION['group_session'] == 'admin') {
               <p>Total Peserta</p>
             </div>
             <div class="icon">
-              <i class="ion ion-pie-graph"></i>
+              <i class="ion ion-person"></i>
             </div>
             <a href="#" class="small-box-footer">Lihat daftar peserta <i class="fa fa-arrow-circle-right"></i></a>
           </div>
