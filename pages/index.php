@@ -129,6 +129,10 @@ if (isset($_GET["p"])) {
     include 'peserta/invoice-peserta.php';
   } elseif ($id == "hapus") {
     include 'paper/hapus.php';
+  } elseif ($id == "konferensi") {
+    include 'peserta/konferensi.php';
+  } elseif ($id == "daftar-konferensi") {
+    include 'peserta/daftar-konferensi.php';
   } else {
     include 'index.php';
   }
@@ -138,4 +142,4 @@ include "footer.php"
 <!-- End  body -->
 
 
-<!-- CONTENT-WRAPPER SECT ION END- ->   
+<!-- CONTENT-WRAPPER SECT ION END- ->
