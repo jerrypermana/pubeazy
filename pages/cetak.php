@@ -61,6 +61,12 @@ $data = mysqli_fetch_array($hasil);
 $tanggal_conf = date('d-m-Y', strtotime($row['tanggal']));
 $tanggal_tf = date('d-m-Y', strtotime($row['tgl_transfer']));
 
+if ($data['image'] == 1){
+	$foto = 'http://localhost/pubeazy/files/peserta/'.$data['image'].'';
+} else {
+	$foto = 'http://localhost/pubeazy/files/peserta/no_photo.png';
+}
+
 // Set Document Information
 $pdf->SetCreator(PDF_CREATOR);
 $pdf->SetAuthor("Pubeazy");
@@ -84,7 +90,7 @@ $body = '
 <table cellpadding="1" cellspacing="1" border="0" style="text-align:center;">
 	<tr style="text-align:left;">
 		<td width="28%">
-			<img src="http://localhost/pubeazy/files/peserta/'.$data['image'].'" border="0" height="200" width="160" align="top" />
+			<img src="'.$foto.'" border="0" height="200" width="160" align="top" />
 		</td>
 		<td width="72%">
 			<table cellpadding="1" cellspacing="6">
