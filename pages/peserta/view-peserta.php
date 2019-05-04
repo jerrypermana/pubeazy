@@ -11,15 +11,35 @@ if ($_SESSION['group_session'] == 'peserta') {
     <?php
 
     $transfer_id   = $_GET['id'];
-    $query      = "SELECT tp.transfer_id,p.id_peserta,p.member_id,p.realname,conf.nama_konferensi,conf.penyelenggara,pk.nama_paket,pk.biaya,tp.v_transfer,mr.nama_ruang,conf.start_date,
-    tp.transfer_id,tp.nama_transfer,tp.jumlah_transfer,tp.kode_bank,tp.tgl_transfer,tp.v_transfer,ab.nama_bank,ab.atas_nama,ab.rekening
-FROM transaksi_peserta as tp
-LEFT JOIN peserta as p ON tp.id_peserta=p.id_peserta
-LEFT JOIN conference as conf ON tp.konferensi_id=conf.konferensi_id
-LEFT JOIN paket_konferensi as pk ON tp.paket_id=pk.paket_id
-LEFT JOIN mst_ruang as mr ON conf.ruang_id=mr.ruang_id
-LEFT JOIN account_bank as ab ON tp.kode_bank=ab.kode_bank
-WHERE tp.transfer_id='$transfer_id'";
+    $query      = "SELECT
+          tp.transfer_id,
+          p.id_peserta,
+          p.member_id,
+          p.realname,
+          p.image,
+          conf.nama_konferensi,
+          conf.penyelenggara,
+          pk.nama_paket,
+          pk.biaya,
+          tp.v_transfer,
+          mr.nama_ruang,
+          conf.start_date,
+          tp.transfer_id,
+          tp.nama_transfer,
+          tp.jumlah_transfer,
+          tp.kode_bank,
+          tp.tgl_transfer,
+          tp.v_transfer,
+          ab.nama_bank,
+          ab.atas_nama,
+          ab.rekening
+     FROM transaksi_peserta as tp
+     LEFT JOIN peserta as p ON tp.id_peserta=p.id_peserta
+     LEFT JOIN conference as conf ON tp.konferensi_id=conf.konferensi_id
+     LEFT JOIN paket_konferensi as pk ON tp.paket_id=pk.paket_id
+     LEFT JOIN mst_ruang as mr ON conf.ruang_id=mr.ruang_id
+     LEFT JOIN account_bank as ab ON tp.kode_bank=ab.kode_bank
+     WHERE tp.transfer_id='$transfer_id'";
     $hasil = mysqli_query($konek, $query);
     $row = mysqli_fetch_array($hasil);
     $hitung = mysqli_num_rows($hasil);
@@ -37,6 +57,7 @@ WHERE tp.transfer_id='$transfer_id'";
         echo '<script>alert("Paper Tidak Di temukan")
              location.replace("' . $base_url . '/index.php?id=dashboard-peserta")</script>';
     }
+
     ?>
     </br>
     <!-- Main content -->
@@ -158,12 +179,13 @@ WHERE tp.transfer_id='$transfer_id'";
 
                                     <?php
                                     if ($row['v_transfer'] == 1) {
-                                        echo '<tr>
+                                        echo '
+                                        <tr>
                                         <th style="width: 20%; text-align: right;"><label>Cetak Tiket<label></th>
                                         <th style="width: 2%">:</th>
                                         <th style="width: 38%">
                                         <a href="'.$base_url.'/cetak.php?transfer_id='.$transfer_id.'" target="new"> <button type="button" class="btn btn-warning btn-sm">Cetak Tiket Konferensi</button></a>
-                                    </tr>';
+                                        </tr>';
                                     }
                                     ?>
                                         <tr>
