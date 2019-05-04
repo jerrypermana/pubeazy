@@ -1,22 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: 03 Mei 2019 pada 07.11
--- Versi Server: 10.1.28-MariaDB
--- PHP Version: 7.1.11
+-- Host: localhost:3306
+-- Generation Time: May 04, 2019 at 12:00 PM
+-- Server version: 5.7.23
+-- PHP Version: 7.2.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `conference`
@@ -25,7 +17,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `account_bank`
+-- Table structure for table `account_bank`
 --
 
 CREATE TABLE `account_bank` (
@@ -36,7 +28,7 @@ CREATE TABLE `account_bank` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `account_bank`
+-- Dumping data for table `account_bank`
 --
 
 INSERT INTO `account_bank` (`kode_bank`, `rekening`, `nama_bank`, `atas_nama`) VALUES
@@ -46,7 +38,7 @@ INSERT INTO `account_bank` (`kode_bank`, `rekening`, `nama_bank`, `atas_nama`) V
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `conference`
+-- Table structure for table `conference`
 --
 
 CREATE TABLE `conference` (
@@ -62,7 +54,7 @@ CREATE TABLE `conference` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `conference`
+-- Dumping data for table `conference`
 --
 
 INSERT INTO `conference` (`konferensi_id`, `nama_konferensi`, `penyelenggara`, `start_date`, `end_date`, `ruang_id`, `show_dashboard`, `input_date`, `last_update`) VALUES
@@ -72,7 +64,7 @@ INSERT INTO `conference` (`konferensi_id`, `nama_konferensi`, `penyelenggara`, `
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `download`
+-- Table structure for table `download`
 --
 
 CREATE TABLE `download` (
@@ -85,7 +77,30 @@ CREATE TABLE `download` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `jadwal_jam`
+-- Table structure for table `homepage`
+--
+
+CREATE TABLE `homepage` (
+  `id` int(10) NOT NULL,
+  `about_title` varchar(100) NOT NULL,
+  `about_text` text NOT NULL,
+  `location_title` varchar(100) NOT NULL,
+  `location_text` text NOT NULL,
+  `when_title` varchar(100) NOT NULL,
+  `when_text` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `homepage`
+--
+
+INSERT INTO `homepage` (`id`, `about_title`, `about_text`, `location_title`, `location_text`, `when_title`, `when_text`) VALUES
+(1, 'PubEazy Conference', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. \r\n', 'Event Location', 'Jakarta Selatan Jakarta, Indonesia (021) 228-2123', 'Event Date', 'Monday to Wednesday, 10-12 December');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `jadwal_jam`
 --
 
 CREATE TABLE `jadwal_jam` (
@@ -94,7 +109,7 @@ CREATE TABLE `jadwal_jam` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `jadwal_jam`
+-- Dumping data for table `jadwal_jam`
 --
 
 INSERT INTO `jadwal_jam` (`jam_id`, `jam`) VALUES
@@ -107,7 +122,7 @@ INSERT INTO `jadwal_jam` (`jam_id`, `jam`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `loa`
+-- Table structure for table `loa`
 --
 
 CREATE TABLE `loa` (
@@ -120,7 +135,7 @@ CREATE TABLE `loa` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `loa`
+-- Dumping data for table `loa`
 --
 
 INSERT INTO `loa` (`loa_id`, `paper_id`, `status`, `tanggal_verifikasi`, `input_date`, `last_update`) VALUES
@@ -129,7 +144,7 @@ INSERT INTO `loa` (`loa_id`, `paper_id`, `status`, `tanggal_verifikasi`, `input_
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `login`
+-- Table structure for table `login`
 --
 
 CREATE TABLE `login` (
@@ -141,7 +156,7 @@ CREATE TABLE `login` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `login`
+-- Dumping data for table `login`
 --
 
 INSERT INTO `login` (`admin_id`, `email`, `realname`, `password`, `group_session`) VALUES
@@ -151,7 +166,7 @@ INSERT INTO `login` (`admin_id`, `email`, `realname`, `password`, `group_session
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `loi`
+-- Table structure for table `loi`
 --
 
 CREATE TABLE `loi` (
@@ -164,7 +179,7 @@ CREATE TABLE `loi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `loi`
+-- Dumping data for table `loi`
 --
 
 INSERT INTO `loi` (`id_loi`, `paper_id`, `status`, `tanggal_verifikasi`, `input_date`, `last_update`) VALUES
@@ -173,7 +188,7 @@ INSERT INTO `loi` (`id_loi`, `paper_id`, `status`, `tanggal_verifikasi`, `input_
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `mst_email`
+-- Table structure for table `mst_email`
 --
 
 CREATE TABLE `mst_email` (
@@ -186,7 +201,7 @@ CREATE TABLE `mst_email` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `mst_email`
+-- Dumping data for table `mst_email`
 --
 
 INSERT INTO `mst_email` (`email_id`, `SMTP_Host`, `SMTP_User`, `SMTP_Pass`, `SMTP_Port`, `Mail_Protocol`) VALUES
@@ -195,7 +210,7 @@ INSERT INTO `mst_email` (`email_id`, `SMTP_Host`, `SMTP_User`, `SMTP_Pass`, `SMT
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `mst_keyword`
+-- Table structure for table `mst_keyword`
 --
 
 CREATE TABLE `mst_keyword` (
@@ -206,7 +221,7 @@ CREATE TABLE `mst_keyword` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `mst_keyword`
+-- Dumping data for table `mst_keyword`
 --
 
 INSERT INTO `mst_keyword` (`keyword_id`, `keyword`, `input_date`, `last_update`) VALUES
@@ -223,7 +238,7 @@ INSERT INTO `mst_keyword` (`keyword_id`, `keyword`, `input_date`, `last_update`)
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `mst_ruang`
+-- Table structure for table `mst_ruang`
 --
 
 CREATE TABLE `mst_ruang` (
@@ -235,7 +250,7 @@ CREATE TABLE `mst_ruang` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `mst_ruang`
+-- Dumping data for table `mst_ruang`
 --
 
 INSERT INTO `mst_ruang` (`ruang_id`, `nama_ruang`, `kuota`, `input_date`, `last_update`) VALUES
@@ -247,7 +262,7 @@ INSERT INTO `mst_ruang` (`ruang_id`, `nama_ruang`, `kuota`, `input_date`, `last_
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `mst_subject`
+-- Table structure for table `mst_subject`
 --
 
 CREATE TABLE `mst_subject` (
@@ -258,7 +273,7 @@ CREATE TABLE `mst_subject` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `mst_subject`
+-- Dumping data for table `mst_subject`
 --
 
 INSERT INTO `mst_subject` (`subject_id`, `subject`, `input_date`, `last_update`) VALUES
@@ -270,7 +285,7 @@ INSERT INTO `mst_subject` (`subject_id`, `subject`, `input_date`, `last_update`)
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `paket_konferensi`
+-- Table structure for table `paket_konferensi`
 --
 
 CREATE TABLE `paket_konferensi` (
@@ -280,7 +295,7 @@ CREATE TABLE `paket_konferensi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `paket_konferensi`
+-- Dumping data for table `paket_konferensi`
 --
 
 INSERT INTO `paket_konferensi` (`paket_id`, `nama_paket`, `biaya`) VALUES
@@ -290,7 +305,7 @@ INSERT INTO `paket_konferensi` (`paket_id`, `nama_paket`, `biaya`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `paper`
+-- Table structure for table `paper`
 --
 
 CREATE TABLE `paper` (
@@ -310,7 +325,7 @@ CREATE TABLE `paper` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `paper`
+-- Dumping data for table `paper`
 --
 
 INSERT INTO `paper` (`paper_id`, `konferensi_id`, `id_presenter`, `judul`, `abstrak`, `komentar`, `file_paper`, `file_fullpaper`, `full_paper`, `v_paper`, `v_akhir`, `input_date`, `last_update`) VALUES
@@ -319,7 +334,7 @@ INSERT INTO `paper` (`paper_id`, `konferensi_id`, `id_presenter`, `judul`, `abst
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `paper_jadwal`
+-- Table structure for table `paper_jadwal`
 --
 
 CREATE TABLE `paper_jadwal` (
@@ -331,7 +346,7 @@ CREATE TABLE `paper_jadwal` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `paper_jadwal`
+-- Dumping data for table `paper_jadwal`
 --
 
 INSERT INTO `paper_jadwal` (`jadwal_id`, `paper_id`, `date`, `jam_id`, `kuota`) VALUES
@@ -340,7 +355,7 @@ INSERT INTO `paper_jadwal` (`jadwal_id`, `paper_id`, `date`, `jam_id`, `kuota`) 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `paper_keyword`
+-- Table structure for table `paper_keyword`
 --
 
 CREATE TABLE `paper_keyword` (
@@ -349,7 +364,7 @@ CREATE TABLE `paper_keyword` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `paper_keyword`
+-- Dumping data for table `paper_keyword`
 --
 
 INSERT INTO `paper_keyword` (`paper_id`, `keyword_id`) VALUES
@@ -368,7 +383,7 @@ INSERT INTO `paper_keyword` (`paper_id`, `keyword_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `paper_subject`
+-- Table structure for table `paper_subject`
 --
 
 CREATE TABLE `paper_subject` (
@@ -377,7 +392,7 @@ CREATE TABLE `paper_subject` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `paper_subject`
+-- Dumping data for table `paper_subject`
 --
 
 INSERT INTO `paper_subject` (`paper_id`, `subject_id`) VALUES
@@ -387,7 +402,7 @@ INSERT INTO `paper_subject` (`paper_id`, `subject_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `peserta`
+-- Table structure for table `peserta`
 --
 
 CREATE TABLE `peserta` (
@@ -400,23 +415,24 @@ CREATE TABLE `peserta` (
   `instansi` varchar(250) NOT NULL,
   `no_hp` varchar(25) NOT NULL,
   `password` varchar(100) NOT NULL,
-  `image` varchar(100) NOT NULL,
+  `image` varchar(100) DEFAULT NULL,
   `group_session` varchar(25) NOT NULL,
   `input_date` date NOT NULL,
   `last_update` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `peserta`
+-- Dumping data for table `peserta`
 --
 
 INSERT INTO `peserta` (`id_peserta`, `member_id`, `realname`, `email`, `address`, `gender`, `instansi`, `no_hp`, `password`, `image`, `group_session`, `input_date`, `last_update`) VALUES
-(1, 'RJI-2-0001', 'Saiful', 'jerrypermana@unsyiah.ac.id', 'Banda Aceh', 1, 'Unsyiah ', '085277772698', '827ccb0eea8a706c4c34a16891f84e7b', '', 'peserta', '2019-05-03', '2019-05-03');
+(1, 'RJI-2-0001', 'Saiful', 'jerrypermana@unsyiah.ac.id', 'Banda Aceh', 1, 'Unsyiah ', '085277772698', '827ccb0eea8a706c4c34a16891f84e7b', '', 'peserta', '2019-05-03', '2019-05-03'),
+(2, 'RJI-2-0001', 'Aulianza', 'aulianza01@gmail.com', 'Aulianza', 1, 'Aulianza ', '6281222440542', 'f0d939cf2b1f1965622d08b1955f4204', 'id_peserta_2.jpg', 'peserta', '2019-05-03', '2019-05-04');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `presenter`
+-- Table structure for table `presenter`
 --
 
 CREATE TABLE `presenter` (
@@ -441,7 +457,7 @@ CREATE TABLE `presenter` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `presenter`
+-- Dumping data for table `presenter`
 --
 
 INSERT INTO `presenter` (`id_presenter`, `member_id`, `realname`, `email`, `gender`, `address`, `instansi`, `afiliasi`, `negara_afiliasi`, `alamat_afiliasi`, `url_orcid`, `url_profil`, `no_hp`, `image`, `password`, `group_session`, `input_date`, `last_update`) VALUES
@@ -450,7 +466,7 @@ INSERT INTO `presenter` (`id_presenter`, `member_id`, `realname`, `email`, `gend
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `speakers`
+-- Table structure for table `speakers`
 --
 
 CREATE TABLE `speakers` (
@@ -466,7 +482,7 @@ CREATE TABLE `speakers` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `status`
+-- Table structure for table `status`
 --
 
 CREATE TABLE `status` (
@@ -475,7 +491,7 @@ CREATE TABLE `status` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `status`
+-- Dumping data for table `status`
 --
 
 INSERT INTO `status` (`status_id`, `status`) VALUES
@@ -486,7 +502,7 @@ INSERT INTO `status` (`status_id`, `status`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `transaksi_peserta`
+-- Table structure for table `transaksi_peserta`
 --
 
 CREATE TABLE `transaksi_peserta` (
@@ -494,20 +510,27 @@ CREATE TABLE `transaksi_peserta` (
   `id_peserta` int(11) NOT NULL,
   `konferensi_id` int(11) NOT NULL,
   `paket_id` int(11) NOT NULL,
-  `nama_transfer` varchar(250) NOT NULL,
-  `jumlah_transfer` varchar(50) NOT NULL,
-  `kode_bank` int(4) NOT NULL,
-  `tgl_transfer` date NOT NULL,
+  `nama_transfer` varchar(250) DEFAULT NULL,
+  `jumlah_transfer` varchar(50) DEFAULT NULL,
+  `kode_bank` int(4) DEFAULT NULL,
+  `tgl_transfer` date DEFAULT NULL,
   `v_transfer` smallint(1) NOT NULL DEFAULT '0',
-  `file_bukti` varchar(250) NOT NULL,
+  `file_bukti` varchar(250) DEFAULT NULL,
   `input_date` date NOT NULL,
-  `last_update` date NOT NULL
+  `last_update` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `transaksi_peserta`
+--
+
+INSERT INTO `transaksi_peserta` (`transfer_id`, `id_peserta`, `konferensi_id`, `paket_id`, `nama_transfer`, `jumlah_transfer`, `kode_bank`, `tgl_transfer`, `v_transfer`, `file_bukti`, `input_date`, `last_update`) VALUES
+(11, 2, 5, 2, 'Aulianza', '700.000', 1, '2019-05-15', 1, 'Transfer_2019-05-04_11.jpg', '2019-05-03', '2019-05-04');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `transaksi_presenter`
+-- Table structure for table `transaksi_presenter`
 --
 
 CREATE TABLE `transaksi_presenter` (
@@ -526,7 +549,7 @@ CREATE TABLE `transaksi_presenter` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `transaksi_presenter`
+-- Dumping data for table `transaksi_presenter`
 --
 
 INSERT INTO `transaksi_presenter` (`transfer_id`, `paper_id`, `biaya_conf`, `nama_transfer`, `jumlah_transfer`, `from_bank`, `kode_bank`, `tgl_transfer`, `v_transfer`, `file_bukti`, `input_date`, `last_update`) VALUES
@@ -553,6 +576,12 @@ ALTER TABLE `conference`
 --
 ALTER TABLE `download`
   ADD PRIMARY KEY (`download_id`);
+
+--
+-- Indexes for table `homepage`
+--
+ALTER TABLE `homepage`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `jadwal_jam`
@@ -685,6 +714,12 @@ ALTER TABLE `download`
   MODIFY `download_id` smallint(2) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `homepage`
+--
+ALTER TABLE `homepage`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `jadwal_jam`
 --
 ALTER TABLE `jadwal_jam`
@@ -754,7 +789,7 @@ ALTER TABLE `paper_jadwal`
 -- AUTO_INCREMENT for table `peserta`
 --
 ALTER TABLE `peserta`
-  MODIFY `id_peserta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_peserta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `presenter`
@@ -772,15 +807,10 @@ ALTER TABLE `status`
 -- AUTO_INCREMENT for table `transaksi_peserta`
 --
 ALTER TABLE `transaksi_peserta`
-  MODIFY `transfer_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `transfer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `transaksi_presenter`
 --
 ALTER TABLE `transaksi_presenter`
   MODIFY `transfer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
