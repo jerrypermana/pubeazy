@@ -86,50 +86,54 @@ $pdf->AddPage();
 $pdf->SetFont('quicksandmedium', 'B', 10);
 $pdf->SetY(35);
 
-$body = '
-<table cellpadding="1" cellspacing="1" border="0" style="text-align:center;">
-	<tr style="text-align:left;">
-		<td width="28%">
-			<img src="'.$foto.'" border="0" height="200" width="160" align="top" />
-		</td>
-		<td width="72%">
-			<table cellpadding="1" cellspacing="6">
-				<tr>
-					<td width="30%">No. Anggota</td>
-					<td width="70%">: '.$data['member_id'].'</td>
-				</tr>
-				<tr>
-					<td width="30%">Nama Lengkap</td>
-					<td width="70%">: '.$data['realname'].'</td>
-				</tr>
-				<tr>
-					<td width="30%">Konferensi</td>
-					<td width="70%">: '.$data['nama_konferensi'].'</td>
-				</tr>
-				<tr>
-					<td width="30%">Penyelanggara</td>
-					<td width="70%">: '.$data['penyelenggara'].'</td>
-				</tr>
-				<tr>
-					<td width="30%">Ruang Konferensi</td>
-					<td width="70%">: '.$data['nama_ruang'].'</td>
-				</tr>
-				<tr>
-					<td width="30%">Tanggal Konferensi</td>
-					<td width="70%">: '.$tanggal_conf.'</td>
-				</tr>
-				<tr>
-					<td width="30%">No. Transaksi</td>
-					<td width="70%">: '.$data['transfer_id'].'</td>
-				</tr>
-				<tr>
-					<td width="30%">Paket Konferensi</td>
-					<td width="70%">: '.$data['nama_paket'].'</td>
-				</tr>
-			</table>
-		</td>
-	</tr>
-</table>';
+if ($data['transfer_id'] == $transfer_id ){
+	$body = '
+	<table cellpadding="1" cellspacing="1" border="0" style="text-align:center;">
+		<tr style="text-align:left;">
+			<td width="28%">
+				<img src="'.$foto.'" border="0" height="200" width="160" align="top" />
+			</td>
+			<td width="72%">
+				<table cellpadding="1" cellspacing="6">
+					<tr>
+						<td width="30%">No. Anggota</td>
+						<td width="70%">: '.$data['member_id'].'</td>
+					</tr>
+					<tr>
+						<td width="30%">Nama Lengkap</td>
+						<td width="70%">: '.$data['realname'].'</td>
+					</tr>
+					<tr>
+						<td width="30%">Konferensi</td>
+						<td width="70%">: '.$data['nama_konferensi'].'</td>
+					</tr>
+					<tr>
+						<td width="30%">Penyelanggara</td>
+						<td width="70%">: '.$data['penyelenggara'].'</td>
+					</tr>
+					<tr>
+						<td width="30%">Ruang Konferensi</td>
+						<td width="70%">: '.$data['nama_ruang'].'</td>
+					</tr>
+					<tr>
+						<td width="30%">Tanggal Konferensi</td>
+						<td width="70%">: '.$tanggal_conf.'</td>
+					</tr>
+					<tr>
+						<td width="30%">No. Transaksi</td>
+						<td width="70%">: '.$data['transfer_id'].'</td>
+					</tr>
+					<tr>
+						<td width="30%">Paket Konferensi</td>
+						<td width="70%">: '.$data['nama_paket'].'</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>';
+} else {
+	$body = '<h1>Data Tidak Ditemukan.</h1>';
+}
 $pdf->writeHTML($body, true, false, true, false, '');
 
 // catatan
