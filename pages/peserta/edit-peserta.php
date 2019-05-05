@@ -21,6 +21,12 @@ if ($_SESSION['group_session'] == 'peserta') {
         echo '<script>alert("ID Anggota Tidak Di Temukan")
              location.replace("' . $base_url . '/index.php?p=dashboard-peserta")</script>';
     }
+
+    if ($row['image'] == 1){
+    	$foto = 'http://localhost/pubeazy/files/peserta/'.$data['image'].'';
+    } else {
+    	$foto = 'http://localhost/pubeazy/files/peserta/no_photo.png';
+    }
     ?>
     </br>
     <!-- Main content -->
@@ -46,7 +52,7 @@ if ($_SESSION['group_session'] == 'peserta') {
                         <div class="tab-pane active" id="tab_0">
 
                              <div class="box-body box-profile">
-                                   <img class="profile-user-img img-responsive img-circle" src="../files/peserta/<?php echo $row['image']; ?>" alt="User profile picture" style=" height: 200px; width: 200px; ">
+                                   <img class="profile-user-img img-responsive img-circle" src="<?php echo $foto; ?>" alt="User profile picture" style=" height: 150px; width: 150px; ">
 
                                    <h3 class="profile-username text-center" style="padding-top: 30px;padding-bottom: 30px;"><?php echo $row['realname']; ?></h3>
 
