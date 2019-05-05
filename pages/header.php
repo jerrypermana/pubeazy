@@ -5,6 +5,28 @@ if (!isset($_SESSION['email'])) {
 
     header("Location: ../index.php");
 }
+
+if ($_SESSION['group_session'] == 'peserta') {
+     $id_peserta   = $_SESSION['id_peserta'];
+     $query      = "SELECT * FROM peserta WHERE id_peserta='$id_peserta'";
+     $hasil = mysqli_query($konek, $query);
+     $row = mysqli_fetch_array($hasil);
+     $hitung = mysqli_num_rows($hasil);
+
+     if ($hitung == 0) {
+         echo '<script>alert("ID Anggota Tidak Di Temukan")
+              location.replace("' . $base_url . '/index.php?p=dashboard-peserta")</script>';
+     }
+
+     if ($row['image'] == ""){
+          $foto = '../files/peserta/no_photo.png';
+     } else {
+          $foto = '../files/peserta/'.$row['image'].'';
+     }
+} else {
+     $foto = '../files/admin.png';
+}
+
 ?>
 <html>
 
@@ -52,6 +74,9 @@ if (!isset($_SESSION['email'])) {
 
     <!-- Google Font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+
+    <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
     <script src="../assets/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
     <script src="../assets/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
@@ -68,7 +93,7 @@ if (!isset($_SESSION['email'])) {
 
         <header class="main-header">
             <!-- Logo -->
-            <a href="../assets/index2.html" class="logo">
+            <a href="<?php echo $base_url; ?>/index.php?p=dashboard" class="logo">
                 <!-- mini logo for sidebar mini 50x50 pixels -->
                 <span class="logo-mini"><b>P</b>E</span>
                 <!-- logo for regular state and mobile devices -->
@@ -96,7 +121,7 @@ if (!isset($_SESSION['email'])) {
                 <!-- Sidebar user panel -->
                 <div class="user-panel">
                     <div class="pull-left image">
-                        <img src="../assets/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                        <img src="<?php echo $foto; ?>" class="img-responsive img-circle" alt="User Image" style=" height: 45px; width: 45px; ">
                     </div>
                     <div class="pull-left info">
                         <p><?php echo $_SESSION['realname'] ?></p>
@@ -298,12 +323,24 @@ if (!isset($_SESSION['email'])) {
                                     </a>
                                 </li>
                                 <!-- <li>
+<<<<<<< HEAD
                                                     <a href="<?php echo $base_url; ?>/index.php?p=setting-loa">
                                                         <i class="fa fa-envelope"></i> <span>LOA</span>
                                                     </a>
                                                 </li>
 
                                                 </li> -->
+=======
+                                    <a href="<?php echo $base_url; ?>/index.php?p=setting-loa">
+                                        <i class="fa fa-envelope"></i> <span>LOA</span>
+                                    </a>
+                                </li> -->
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-cog"></i> <span>Pengaturan Aplikasi</span>
+                                    </a>
+                                </li>
+>>>>>>> master
 
                             </ul>
                         </li>

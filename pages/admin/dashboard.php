@@ -68,7 +68,7 @@ if ($_SESSION['group_session'] == 'admin') {
             <div class="icon">
               <i class="ion ion-man"></i>
             </div>
-            <a href="#" class="small-box-footer">Lihat daftar presenter <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="<?php echo $base_url; ?>/index.php?p=rep-presenter" class="small-box-footer">Lihat daftar presenter <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
@@ -82,7 +82,7 @@ if ($_SESSION['group_session'] == 'admin') {
             <div class="icon">
               <i class="ion ion-person"></i>
             </div>
-            <a href="#" class="small-box-footer">Lihat daftar peserta <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="<?php echo $base_url; ?>/index.php?p=rep-peserta" class="small-box-footer">Lihat daftar peserta <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->

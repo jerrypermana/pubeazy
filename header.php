@@ -31,6 +31,9 @@ session_start();
     <!-- Main Stylesheet File -->
     <link href="assets-event/css/style.css" rel="stylesheet">
 
+    <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+
+
     <!-- =======================================================
     Theme Name: TheEvent
     Theme URL: https://bootstrapmade.com/theevent-conference-event-bootstrap-template/
@@ -57,7 +60,7 @@ session_start();
                 <ul class="nav-menu">
                     <li class="menu-active"><a href="<?php echo $base_url; ?>/url.php?p=home">Home</a></li>
                     <li><a href="<?php echo $base_url; ?>/#about">About</a></li>
-                    <li><a href="<?php echo $base_url; ?>/#speakers">Speakers</a></li>                 
+                    <li><a href="<?php echo $base_url; ?>/#speakers">Speakers</a></li>
                     <li><a href="<?php echo $base_url; ?>/#contact">Contact</a></li>
                     <li><a href="<?php echo $base_url; ?>/url.php?p=login">Login</a></li>
                     <li class="buy-tickets"><a href="<?php echo $base_url; ?>/url.php?p=register">Register</a></li>

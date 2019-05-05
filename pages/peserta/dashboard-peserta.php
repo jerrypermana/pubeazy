@@ -3,10 +3,15 @@ if ($_SESSION['group_session'] == 'peserta') {
     ?>
 <!-- Content Header (Page header) -->
 <section class="content-header">
-
-
+ <h1>
+   Dashboard
+   <small>Selamat datang </small>
+ </h1>
+ <ol class="breadcrumb">
+   <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+   <li class="active">Dashboard</li>
+ </ol>
 </section>
-<br>
 
 <!-- Main content -->
 <section class="content">
@@ -14,16 +19,15 @@ if ($_SESSION['group_session'] == 'peserta') {
         <!-- left column -->
         <div class="col-md-12">
 
-           
-            <div class="callout callout-info">
+            <!-- <div class="callout callout-info"> -->
                 <!-- <h4>INFO</h4>
                 <li><?php echo $status; ?></li>
                 <li><?php echo $status_loi; ?></li>
-                <li><?php echo $status_akhir; ?></li>                
+                <li><?php echo $status_akhir; ?></li>
                 <li><?php echo $status_loa; ?></li>
                 <li><?php echo $status_paper; ?></li> -->
                 <!-- <li><?php echo $komentar; ?></li> -->
-            </div>
+            <!-- </div> -->
 
             <!-- general form elements -->
             <div class="box box-primary">
@@ -34,7 +38,7 @@ if ($_SESSION['group_session'] == 'peserta') {
                 <!-- /.box-header -->
                 <div class="box-body">
                     <div class="row">
-                        
+
                         <div class="col-md-12">
 
                             <!-- form start -->
@@ -52,7 +56,7 @@ if ($_SESSION['group_session'] == 'peserta') {
                                                 <th style="width: 15%;">PENYELENGGARA</th>
                                                 <th style="width: 10%;">PAKET</th>
                                                 <th style="width: 20%;">STATUS TRANSFER</th>
-                                               
+
                                             </tr>
                                         </thead>
                                         <?php
@@ -67,7 +71,7 @@ if ($_SESSION['group_session'] == 'peserta') {
                             WHERE tp.id_peserta='$id_peserta'");
                             while ($row_transaksi = mysqli_fetch_array($select)) {
 
-                                
+
                                 if ($row_transaksi['v_transfer'] == 0) {
 
                                     $status = '<p style="color: red; font-weight: bold;"> Belum Transfer</p>';
@@ -77,13 +81,13 @@ if ($_SESSION['group_session'] == 'peserta') {
                                 }
                                 echo "<tbody>
                                             <tr>
-                                            <td align='center'><a href='$base_url/index.php?p=view-peserta&id=$row_transaksi[transfer_id]'><button type='button' class='btn btn-default'><i class='fa fa-eye'> Lihat </i></button></a>
+                                            <td align='center'><a href='$base_url/index.php?p=view-peserta&id=$row_transaksi[transfer_id]'><button type='button' class='btn btn-default'><i class='fa fa-eye'></i> Lihat</button></a>
                                                 <td>$row_transaksi[nama_konferensi]</td>
                                                 <td>$row_transaksi[penyelenggara] </td>
                                                 <td>$row_transaksi[nama_paket] </td>
-                                                                                             
+
                                                  <td>$status</td>
-                                               
+
                                               </td>
                                             </tr>
                                         </tbody>";
@@ -97,7 +101,7 @@ if ($_SESSION['group_session'] == 'peserta') {
                                                 <th>PENYELENGGARA</th>
                                                 <th>PAKET</th>
                                                 <th>STATUS TRANSFER</th>
-                                               
+
                                             </tr>
                                         </tfoot>
                                     </table>
@@ -122,6 +126,6 @@ if ($_SESSION['group_session'] == 'peserta') {
 
     </div>
     </div>
-    <?php 
+    <?php
 }
-?> 
+?>

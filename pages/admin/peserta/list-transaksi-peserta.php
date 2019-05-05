@@ -3,45 +3,29 @@ if ($_SESSION['group_session'] == 'admin' || $_SESSION['group_session'] == 'revi
     ?>
 <!-- Content Header (Page header) -->
 <section class="content-header">
-
-
+     <h1>Daftar Bukti Transfer Peserta</h1>
 </section>
-<br>
 <!-- Main content -->
 <section class="content">
     <div class="row">
         <!-- left column -->
         <div class="col-md-12">
-           
+
             <!-- general form elements -->
             <div class="box box-primary">
-                <div class="box-header with-border">
-                    <h3>
-                        Daftar Bukti Transfer Peserta
-                    </h3>
-                </div>
 
                 <!-- /.box-header -->
                 <div class="box-body">
-                    <div class="row">
-
-                    </div>
-                    <br>
-                    <br>
                     <div class="col-md-12">
 
                         <!-- form start -->
-                        <div class="box">
-
-                            <div class="box-header">
-
-                            </div>
+                        <!-- <div class="box"> -->
                             <!-- /.box-header -->
                             <div class="box-body">
                                 <table id="paper_table" data-show-refresh="true" data-classes="table table-bordered" data-pagination="true" data-id-field="id" data-page-list="[10, 25, 50, 100, ALL]" data-side-pagination="server"></table>
                             </div>
                             <!-- /.box-body -->
-                        </div>
+                        <!-- </div> -->
 
                     </div>
                 </div>
@@ -70,7 +54,7 @@ if ($_SESSION['group_session'] == 'admin' || $_SESSION['group_session'] == 'revi
                         halign: 'center',
                         width: '20%',
                         formatter: function(value, row) {
-                            return "<a href='<?php echo $base_url; ?>/index.php?p=v-transfer-peserta&id=" + value + "''><button type='button' class='btn btn-primary'><i class='fa fa-check-square-o'> Verify</i></button></a><br><br><a href='<?php echo $base_url; ?>/index.php?p=hapus&idtrans=" + value + "'onClick=\"return confirm('Apakah anda yakin akan menghapus data item')\"><button type='button' class='btn btn-danger'><i class='fa fa-trash'> delete</i></button></a>";
+                            return "<a href='<?php echo $base_url; ?>/index.php?p=v-transfer-peserta&id=" + value + "''><button type='button' class='btn btn-primary'><i class='fa fa-check-square-o'></i> Verify</button></a><br><br><a href='<?php echo $base_url; ?>/index.php?p=hapus&idtrans=" + value + "'onClick=\"return confirm('Apakah anda yakin akan menghapus data item')\"><button type='button' class='btn btn-danger'><i class='fa fa-trash'></i> Delete</button></a>";
 
                         }
                     },
@@ -103,10 +87,10 @@ if ($_SESSION['group_session'] == 'admin' || $_SESSION['group_session'] == 'revi
                         halign: 'center',
                         width: '10%',
                         align: 'center',
-                        
+
                         sortable: false
                     },
-                   
+
                     {
                         field: 'v_transfer',
                         title: 'STATUS TRANSAKSI',
@@ -133,9 +117,9 @@ if ($_SESSION['group_session'] == 'admin' || $_SESSION['group_session'] == 'revi
                         width: '10%',
                         sortable: true,
                         formatter: tglIndo
-                        
+
                     }
-                   
+
                 ],
                 onLoadSuccess: function(e) {
                     //				$('#total_record').html(e.total);
@@ -156,6 +140,6 @@ if ($_SESSION['group_session'] == 'admin' || $_SESSION['group_session'] == 'revi
             return tanggal + "-" + bulan + "-" + tahun;
         }
     </script>
-    <?php 
+    <?php
 }
-?> 
+?>

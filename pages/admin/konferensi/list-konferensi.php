@@ -3,10 +3,10 @@ if ($_SESSION['group_session'] == 'admin') {
     ?>
 <!-- Content Header (Page header) -->
 <section class="content-header">
-
-
+     <h1>
+        Daftar Konferensi
+     </h1>
 </section>
-<br>
 <!-- Main content -->
 <section class="content">
     <div class="row">
@@ -14,11 +14,6 @@ if ($_SESSION['group_session'] == 'admin') {
         <div class="col-md-12">
             <!-- general form elements -->
             <div class="box box-primary">
-                <div class="box-header with-border">
-                    <h3>
-                        List Conference
-                    </h3>
-                </div>
 
                 <!-- /.box-header -->
                 <div class="box-body">
@@ -26,7 +21,7 @@ if ($_SESSION['group_session'] == 'admin') {
 
                     </div>
                     <div class="col-md-6" align="right">
-				    
+
 				  </div>
                     <div class="col-md-3" align="right">
                         <a href='<?php echo $base_url; ?>/index.php?p=add-konferensi' class="btn btn-block btn-warning">
@@ -39,10 +34,10 @@ if ($_SESSION['group_session'] == 'admin') {
                     </div>
                     <br>
                     <br>
-                    <div class="col-md-12">
+                    <!-- <div class="col-md-12"> -->
 
                         <!-- form start -->
-                        <div class="box">
+                        <!-- <div class="box"> -->
 
                             <div class="box-header">
 
@@ -52,9 +47,9 @@ if ($_SESSION['group_session'] == 'admin') {
                                 <table id="paper_table" data-show-refresh="true" data-classes="table table-bordered" data-pagination="true" data-id-field="id" data-page-list="[10, 25, 50, 100, ALL]" data-side-pagination="server"></table>
                             </div>
                             <!-- /.box-body -->
-                        </div>
+                        <!-- </div> -->
 
-                    </div>
+                    <!-- </div> -->
                 </div>
             </div>
         </div>
@@ -127,7 +122,7 @@ if ($_SESSION['group_session'] == 'admin') {
                             return status;
                         }
                     },
-                   
+
                     {
                         field: 'konferensi_id',
                         title: 'SETTING',
@@ -159,6 +154,6 @@ if ($_SESSION['group_session'] == 'admin') {
             return tanggal + "-" + bulan + "-" + tahun;
         }
     </script>
-    <?php 
+    <?php
 }
-?> 
+?>
