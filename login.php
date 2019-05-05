@@ -133,7 +133,7 @@ include "config/koneksi.php";
 
                         if ($tu['afiliasi'] != NULL && $tu['afiliasi'] != '') {
                             echo '<script>location.replace("pages/index.php?p=dashboard-presenter")</script>';
-                            
+
                         } else{
                             echo '<script>location.replace("pages/index.php?p=edit-presenter")</script>';
                         }
@@ -164,7 +164,7 @@ include "config/koneksi.php";
                     } else {
 
                         echo '<script>alert("Login Gagal, Silahkan Masukkan Password dan email dengan benar")
-				location.replace("index.php?p=login")</script>';
+				location.replace("url.php?p=login")</script>';
                     }
                 }
             }
