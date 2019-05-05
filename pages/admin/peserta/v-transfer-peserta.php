@@ -1,5 +1,5 @@
 <?php
-if ($_SESSION['group_session'] == 'admin') {
+if ($_SESSION['group_session'] == 'admin' || $_SESSION['group_session'] == 'reviewer') {
     ?>
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -40,7 +40,7 @@ if ($_SESSION['group_session'] == 'admin') {
                                 $hitung = mysqli_num_rows($hasil);
 
 
-                                $tanggal_conf = date('d-m-Y', strtotime($row['tanggal']));
+                                $tanggal_conf = date('d-m-Y', strtotime($row['start_date']));
 
                                 if ($hitung == 0) {
                                     echo '<script>alert("ID Transaksi Peserta Tidak Di Temukan")

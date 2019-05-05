@@ -24,7 +24,7 @@ WHERE tp.transfer_id='$transfer_id'";
     $row = mysqli_fetch_array($hasil);
     $hitung = mysqli_num_rows($hasil);
 
-    $tanggal_conf = date('d-m-Y', strtotime($row['tanggal']));
+    $tanggal_conf = date('d-m-Y', strtotime($row['start_date']));
     $tanggal_tf = date('d-m-Y', strtotime($row['tgl_transfer']));
 
     if ($row['v_transfer'] == '0') {

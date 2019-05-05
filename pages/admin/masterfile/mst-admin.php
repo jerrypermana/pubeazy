@@ -16,82 +16,94 @@ if ($_SESSION['group_session'] == 'admin') {
             <!-- left column -->
             <div class="col-md-12">
 
+                <div class="col-md-3" align="right">
+                    <button type="button" class="btn btn-block btn-primary" data-target="#ModalAddAdmin" data-toggle="modal"> <i class="fa fa-plus"></i> Tambah Pengguna Sistem</button>
 
+                </div>
+                <div class="col-md-3" align="right">
+                    <a href="<?php echo $base_url; ?>/index.php?p=mst-admin" class="btn btn-block btn-primary">
+                        <i class="fa fa-list"></i> Daftar Pengguna Sistem
+                    </a>
+                </div>
+                <div class="col-md-6">
+                </div>
+
+                <br>
+                <br>
                 <div class="col-md-12">
+                    <div class="box box-warning">
+                        <div class="box-header with-border">
+                            <h3 class="box-title"><i class="fa fa-user-secret"></i> List Reviewer</h3>
 
-                    <!-- form start -->
-                    <div class="box">
-                        <div class="box-header">
-                            <br>
-                            <div class="col-md-6">
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                </button>
                             </div>
-                            <div class="col-md-3" align="right">
-                                <button type="button" class="btn btn-block btn-primary" data-target="#ModalAddAdmin" data-toggle="modal"> <i class="fa fa-plus"></i> Tambah Pengguna Sistem</button>
-                            </div>
-                            <div class="col-md-3" align="right">
-                                <a href="<?php echo $base_url; ?>/index.php?p=mst-admin" class="btn btn-block btn-primary">
-                                    <i class="fa fa-list"></i> Daftar Pengguna Sistem
-                                </a>
-                            </div>
-
+                            <!-- /.box-tools -->
                         </div>
+
                         <!-- /.box-header -->
                         <div class="box-body">
-                            <table class="table table-bordered">
-                                <thead>
-                                    <tr>
-                                        <th style="width: 20%; text-align: center;">USERNAME</th>
-                                        <th style="width: 20%; text-align: center;">REALNAME</th>
-                                        <th style="width: 20%; text-align: center;">GROUP SESSION</th>
-                                        <th style="width: 20%; text-align: center;">ACTION</th>
-                                    </tr>
-                                </thead>
-                                <?php
+                            <div class="col-xs-12">
+                                <div class="box">
+                                    <div class="box-header">
+                                        <br>
+                                        <div class="callout callout-info">
+                                            <span>Reviewer Login : <code>http://[alamat_website]/url.php?p=admin-login</code></span>
+                                        </div>
+
+                                    </div>
+                                    <!-- /.box-header -->
+                                    <div class="box-body table-responsive no-padding">
+                                        <table id="example2" class="table table-bordered table-striped dataTable">
+                                            <thead>
+                                                <tr>
+                                                    <th style="width: 30%; text-align: center;">Name</th>
+                                                    <th style="width: 30%; text-align: center;">Email</th>
+                                                    <th style="width: 20%; text-align: center;">Group Session</th>
+                                                    <th style="width: 20%; text-align: center;">Actions</th>
+                                                </tr>
+                                            </thead>
+                                            <?php
 
 
-                                $select = mysqli_query($konek, "SELECT * FROM login");
+                                            $select_login = mysqli_query($konek, "SELECT * FROM login");
+                                            while ($d_login = mysqli_fetch_array($select_login)) {
 
 
 
-
-                                while ($row_admin = mysqli_fetch_array($select)) {
-
-
-
-
-                                    echo "<tbody>
-                                            <tr>
-                                                <td >$row_admin[username]</td>
-                                                <td >$row_admin[realname]</td>
-                                                <td >$row_admin[group_session]</td>
-                                                <td align='center'>
-                                                <a href='$base_url/index.php?p=mst-edit-admin&adminID=$row_admin[username]'><button type='button' class='btn btn-default'><i class='fa fa-edit'></i> Edit</button></a>
+                                                echo "<tbody>
+                                                <tr>
+                                                    <td >$d_login[email]</td>
+                                                    <td >$d_login[realname]</td>
+                                                    <td >$d_login[group_session]</td>
+                                                    <td align='center'>
+                                                <a href='$base_url/index.php?p=mst-edit-admin&adminID=$d_login[admin_id]'><button type='button' class='btn btn-default'><i class='fa fa-edit'></i> Edit</button></a>
                                                 &nbsp
-                                                <a href='$base_url/index.php?p=mst-hapus&adminID=$row_admin[username]'onClick=\"return confirm('Apakah anda yakin akan menghapus data Jam $row_admin[username] ?')\"><button type='button' class='btn btn-danger'><i class='fa fa-trash'> Hapus</i></button></a>
+                                                <a href='$base_url/index.php?p=mst-hapus&admin_id=$d_login[admin_id]'onClick=\"return confirm('Apakah anda yakin akan menghapus data Admin $d_login[realname] ?')\"><button type='button' class='btn btn-danger'><i class='fa fa-trash'> Hapus</i></button></a>
                                                 </td>
-                                            </tr>
-                                        </tbody>";
-                                };
-                                ?>
+                                                </tr>
+                                            </tbody>";
+                                            };
+                                            ?>
 
-                                <tfoot>
-                                    <tr>
-                                        <th>USERNAME</th>
-                                        <th>REALNAME</th>
-                                        <th>GROUP SESSION</th>
-                                        <th>ACTION</th>
-                                    </tr>
-                                </tfoot>
-                            </table>
+
+                                        </table>
+                                    </div>
+                                    <!-- /.box-body -->
+                                </div>
+                                <!-- /.box -->
+                            </div>
                         </div>
                         <!-- /.box-body -->
                     </div>
-
+                    <!-- /.box -->
                 </div>
+
+
+
             </div>
         </div>
-        </div>
-        <!-- /.box -->
 
 
         <!-- /.box -->
@@ -99,10 +111,8 @@ if ($_SESSION['group_session'] == 'admin') {
         <!-- Input addon -->
 
 
-        </div>
-        </div>
-         <!-- Modal Popup untuk Add SUbject-->
-         <div id="ModalAddAdmin" name='myform' class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <!-- Modal Popup untuk Add SUbject-->
+        <div id="ModalAddAdmin" name='myform' class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
 
@@ -112,11 +122,11 @@ if ($_SESSION['group_session'] == 'admin') {
                     </div>
 
                     <div class="modal-body">
-                        <form action='<?php echo $base_url; ?>/index.php?p=save-admin' method="POST" >
+                        <form action='<?php echo $base_url; ?>/index.php?p=save-admin' method="POST">
 
                             <div class="form-group" style="padding-bottom: 20px;">
-                                <label for="Modal Name">Username</label>
-                                <input type="text" name="username" class="form-control" placeholder="Masukkan Username..." required />
+                                <label for="Modal Name">Email</label>
+                                <input type="text" name="email" class="form-control" placeholder="Masukkan Email..." required />
                                 <br>
                                 <label for="Modal Name">Nama Lengkap</label>
                                 <input type="text" name="realname" class="form-control" placeholder="Masukkan Nama Lengkap..." required />
@@ -124,7 +134,7 @@ if ($_SESSION['group_session'] == 'admin') {
                                 <label for="Modal Name">Password</label>
                                 <input type="password" name="password" class="form-control" placeholder="Masukkan Password..." required />
                                 <br>
-                                
+
 
                             </div>
 
@@ -150,33 +160,32 @@ if ($_SESSION['group_session'] == 'admin') {
                 </div>
             </div>
         </div>
-       
+
         <!-- TUTUP MODAL SUBJECT -->
         <!-- <script>
-            $(document).ready(function() {
+                                    $(document).ready(function() {
 
                  
-                $('#add_admin').submit(function(e) {
-                                data = $('#add_admin').serialize();
-                                $.ajax({
-                                    type: "POST",
-                                    url: "data_api/save-admin.php",
-                                    data: data,
-                                    dataType: "json",
-                                    success: function(result) {
-                                        if (result.success) {
-                                            alert(result.msg);
-                                            $('#ModalAddAdmin').modal('hide');
-                                            $('#add_admin')[0].reset();
-                                        }
-                                    }
-                                });
-                                e.preventDefault();
-                            });
-            })
-        </script> -->
-        </div>
-        </div>
+                                        $('#add_admin').submit(function(e) {
+                                                        data = $('#add_admin').serialize();
+                                                        $.ajax({
+                                                            type: "POST",
+                                                            url: "data_api/save-admin.php",
+                                                            data: data,
+                                                            dataType: "json",
+                                                            success: function(result) {
+                                                                if (result.success) {
+                                                                    alert(result.msg);
+                                                                    $('#ModalAddAdmin').modal('hide');
+                                                                    $('#add_admin')[0].reset();
+                                                                }
+                                                            }
+                                                        });
+                                                        e.preventDefault();
+                                                    });
+                                    })
+                                </script> -->
+       
     <?php
 }
 ?>

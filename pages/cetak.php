@@ -58,8 +58,8 @@ LEFT JOIN account_bank as ab ON tp.kode_bank=ab.kode_bank
 WHERE tp.transfer_id='$transfer_id'";
 $hasil = mysqli_query($konek, $query);
 $data = mysqli_fetch_array($hasil);
-$tanggal_conf = date('d-m-Y', strtotime($row['tanggal']));
-$tanggal_tf = date('d-m-Y', strtotime($row['tgl_transfer']));
+$tanggal_conf = date('d-m-Y', strtotime($data['start_date']));
+$tanggal_tf = date('d-m-Y', strtotime($data['tgl_transfer']));
 
 // Set Document Information
 $pdf->SetCreator(PDF_CREATOR);

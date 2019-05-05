@@ -122,7 +122,7 @@ if (!isset($_SESSION['email'])) {
                         </li>
                         <li>
                             <a href="<?php echo $base_url; ?>/index.php?p=list-konferensi">
-                                <i class="fa fa-newspaper-o"></i> <span>Konferensi</span>
+                                <i class="fa fa-newspaper-o"></i> <span>Conference</span>
 
                             </a>
 
@@ -142,30 +142,30 @@ if (!isset($_SESSION['email'])) {
                                 </li>
                                 <li>
                                     <a href="<?php echo $base_url; ?>/index.php?p=v-paper">
-                                        <i class="fa fa-check-square-o"></i> <span>Verifikasi Paper</span>
+                                        <i class="fa fa-check-square-o"></i> <span>Verification Paper</span>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="<?php echo $base_url; ?>/index.php?p=list-transaksi-presenter">
-                                        <i class="fa fa-bank"></i> <span>Verifikasi Transfer</span>
+                                        <i class="fa fa-bank"></i> <span>Verification Payment Proofs</span>
                                     </a>
                                 </li>
 
                                 <li>
                                     <a href="<?php echo $base_url; ?>/index.php?p=list-v-akhir">
-                                        <i class="fa fa-check-square"></i> <span>Verifikasi Akhir</span>
+                                        <i class="fa fa-check-square"></i> <span>Verification Full Paper</span>
                                     </a>
                                 </li>
                                 <!-- <li>
-                                    <a href="<?php echo $base_url; ?>/index.php?p=list-jadwal">
-                                        <i class="fa fa-calendar-check-o"></i> <span>List Jadwal</span>
-                                    </a>
-                                </li> -->
+                                                    <a href="<?php echo $base_url; ?>/index.php?p=list-jadwal">
+                                                        <i class="fa fa-calendar-check-o"></i> <span>List Jadwal</span>
+                                                    </a>
+                                                </li> -->
                             </ul>
                         </li>
                         <li class="treeview">
                             <a href="#">
-                                <i class="fa fa-users"></i> <span>Peserta</span>
+                                <i class="fa fa-users"></i> <span>Participants</span>
                                 <span class="pull-right-container">
                                     <i class="fa fa-angle-left pull-right"></i>
                                 </span>
@@ -174,7 +174,7 @@ if (!isset($_SESSION['email'])) {
 
                                 <li>
                                     <a href="<?php echo $base_url; ?>/index.php?p=list-transaksi-peserta">
-                                        <i class="fa fa-users"></i> <span>Transfer Peserta</span>
+                                        <i class="fa fa-users"></i> <span>Payment Proofs Participant</span>
                                     </a>
                                 </li>
                             </ul>
@@ -209,16 +209,16 @@ if (!isset($_SESSION['email'])) {
                                         <i class="fa fa-bank"></i> <span>Bank Account</span>
                                     </a>
                                 </li>
-                                 <li>
+                                <li>
                                     <a href="<?php echo $base_url; ?>/index.php?p=mst-ruang">
                                         <i class="fa fa-building-o"></i> <span>Ruang</span>
                                     </a>
                                 </li>
-                               <!-- <li>
-                                    <a href="#">
-                                        <i class="fa fa-file-o"></i> <span>LOA (Letter of Accepted)</span>
-                                    </a>
-                                </li> -->
+                                <!-- <li>
+                                                    <a href="#">
+                                                        <i class="fa fa-file-o"></i> <span>LOA (Letter of Accepted)</span>
+                                                    </a>
+                                                </li> -->
                                 <li>
                                     <a href="<?php echo $base_url; ?>/index.php?p=mst-admin">
                                         <i class="fa fa-user"></i> <span>Admin</span>
@@ -228,28 +228,47 @@ if (!isset($_SESSION['email'])) {
                         </li>
                         <li class="treeview">
                             <a href="#">
-                                <i class="fa fa-files-o"></i> <span>Pelaporan</span>
+                                <i class="fa fa-user-secret"></i> <span>Reviewer</span>
                                 <span class="pull-right-container">
                                     <i class="fa fa-angle-left pull-right"></i>
                                 </span>
                             </a>
                             <ul class="treeview-menu">
-                            <!-- <li>
-                                    <a href="<?php echo $base_url; ?>/index.php?p=rep-loi">
-                                        <i class="fa fa-line-chart"></i> <span>Statistik</span>
+                                <li>
+                                    <a href="<?php echo $base_url; ?>/index.php?p=list-reviewer">
+                                        <i class="fa fa-list"></i> <span>Reviewer</span>
                                     </a>
                                 </li>
+                            </ul>
+                        </li>
 
-                                <li>
-                                    <a href="<?php echo $base_url; ?>/index.php?p=rep-loi">
-                                        <i class="fa fa-file-o"></i> <span>Letter Of Invititation (LOI)</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="<?php echo $base_url; ?>/index.php?p=rep-loi">
-                                        <i class="fa fa-file-o"></i> <span>Letter Of Accepted (LOA)</span>
-                                    </a>
-                                </li> -->
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-files-o"></i> <span>Reporting</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+
+
+
+                                <!-- <li>
+                                                    <a href="<?php echo $base_url; ?>/index.php?p=rep-loi">
+                                                        <i class="fa fa-line-chart"></i> <span>Statistik</span>
+                                                    </a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="<?php echo $base_url; ?>/index.php?p=rep-loi">
+                                                        <i class="fa fa-file-o"></i> <span>Letter Of Invititation (LOI)</span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<?php echo $base_url; ?>/index.php?p=rep-loi">
+                                                        <i class="fa fa-file-o"></i> <span>Letter Of Accepted (LOA)</span>
+                                                    </a>
+                                                </li> -->
                                 <li>
                                     <a href="<?php echo $base_url; ?>/index.php?p=rep-presenter">
                                         <i class="fa fa-file-o"></i> <span>Presenter</span>
@@ -279,16 +298,13 @@ if (!isset($_SESSION['email'])) {
                                     </a>
                                 </li>
                                 <!-- <li>
-                                    <a href="<?php echo $base_url; ?>/index.php?p=setting-loa">
-                                        <i class="fa fa-envelope"></i> <span>LOA</span>
-                                    </a>
-<<<<<<< Updated upstream
-                                </li>
+                                                    <a href="<?php echo $base_url; ?>/index.php?p=setting-loa">
+                                                        <i class="fa fa-envelope"></i> <span>LOA</span>
+                                                    </a>
+                                                </li>
 
-=======
-                                </li> -->
-                                
->>>>>>> Stashed changes
+                                                </li> -->
+
                             </ul>
                         </li>
                         <!-- CLOSE SYSTEM SETTING -->
@@ -303,112 +319,181 @@ if (!isset($_SESSION['email'])) {
 
                     <?php
                 } ?>
-                <!-- CLOSE MODUL ADMIN -->
+                    <!-- CLOSE MODUL ADMIN -->
+                    <!-- START MODUL REVIEWER -->
+                    <?php
 
-                <!-- START MODUL PRESENTER-->
-                <?php
+                    if ($_SESSION['group_session'] == 'reviewer') {
+
+
+                        ?>
+                        <li>
+                            <a href="<?php echo $base_url; ?>/index.php?p=dashboard-reviewer">
+                                <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+                            </a>
+                        </li>
+                       
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-user"></i> <span>Presenter</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li>
+                                    <a href="<?php echo $base_url; ?>/index.php?p=list-paper">
+                                        <i class="fa fa-book"></i> <span>Daftar Paper</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="<?php echo $base_url; ?>/index.php?p=v-paper">
+                                        <i class="fa fa-check-square-o"></i> <span>Verification Paper</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="<?php echo $base_url; ?>/index.php?p=list-transaksi-presenter">
+                                        <i class="fa fa-bank"></i> <span>Verification Payment Proofs</span>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="<?php echo $base_url; ?>/index.php?p=list-v-akhir">
+                                        <i class="fa fa-check-square"></i> <span>Verification Full Paper</span>
+                                    </a>
+                                </li>
+                              
+                            </ul>
+                        </li>
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-users"></i> <span>Participants</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+
+                                <li>
+                                    <a href="<?php echo $base_url; ?>/index.php?p=list-transaksi-peserta">
+                                        <i class="fa fa-users"></i> <span>Payment Proofs Participant</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="../config/logout.php">
+                                <i class="fa fa-sign-out"></i> <span>Logout</span>
+                            </a>
+                        </li>
+                    <?php
+                }
+                ?>
+                    <!-- CLOSE MODUL REVIEWER -->
+                    <!-- START MODUL PRESENTER-->
+                    <?php
                     if ($_SESSION['group_session'] == 'presenter') {
 
 
                         ?>
-                    <li>
-                        <a href="<?php echo $base_url; ?>/index.php?p=dashboard-presenter">
-                            <i class="fa fa-dashboard"></i> <span>Dashboard</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="<?php echo $base_url; ?>/index.php?p=pre-list-paper">
-                            <i class="fa fa-list"></i> <span>List Paper</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="<?php echo $base_url; ?>/index.php?p=add-paper">
-                            <i class="fa fa-book"></i> <span>Upload Paper</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="<?php echo $base_url; ?>/index.php?p=bukti-transfer">
-                            <i class="fa fa-credit-card"></i> <span>Payment Proofs</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="<?php echo $base_url; ?>/index.php?p=add-jadwal">
-                            <i class="fa fa-calendar-plus-o"></i> <span>Add Schedule</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="<?php echo $base_url; ?>/index.php?p=add-ppt">
-                            <i class="fa fa-file-powerpoint-o"></i> <span>Upload PPT</span>
-                        </a>
-                    </li>
+                        <li>
+                            <a href="<?php echo $base_url; ?>/index.php?p=dashboard-presenter">
+                                <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="<?php echo $base_url; ?>/index.php?p=pre-list-paper">
+                                <i class="fa fa-list"></i> <span>List Paper</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="<?php echo $base_url; ?>/index.php?p=add-paper">
+                                <i class="fa fa-book"></i> <span>Upload Paper</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="<?php echo $base_url; ?>/index.php?p=bukti-transfer">
+                                <i class="fa fa-credit-card"></i> <span>Payment Proofs</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="<?php echo $base_url; ?>/index.php?p=add-jadwal">
+                                <i class="fa fa-calendar-plus-o"></i> <span>Add Schedule</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="<?php echo $base_url; ?>/index.php?p=add-ppt">
+                                <i class="fa fa-file-powerpoint-o"></i> <span>Upload PPT</span>
+                            </a>
+                        </li>
 
-                    <li>
-                        <a href="<?php echo $base_url; ?>/index.php?p=edit-presenter">
-                            <i class="fa fa-user"></i> <span>Change Your Profile</span>
-                        </a>
-                    </li>
+                        <li>
+                            <a href="<?php echo $base_url; ?>/index.php?p=edit-presenter">
+                                <i class="fa fa-user"></i> <span>Change Your Profile</span>
+                            </a>
+                        </li>
 
-                    <li>
-                        <a href="../config/logout.php">
-                            <i class="fa fa-sign-out"></i> <span>Logout</span>
-                        </a>
-                    </li>
+                        <li>
+                            <a href="../config/logout.php">
+                                <i class="fa fa-sign-out"></i> <span>Logout</span>
+                            </a>
+                        </li>
 
                     <?php
 
                 }
                 ?>
-                <!-- CLOSE MODUL PRESENTER-->
-                <!-- START MODUL PESERTA -->
-                <?php
+                    <!-- CLOSE MODUL PRESENTER-->
+                    <!-- START MODUL PESERTA -->
+                    <?php
                     if ($_SESSION['group_session'] == 'peserta') {
 
 
                         ?>
-                    <li>
-                        <a href="<?php echo $base_url; ?>/index.php?p=dashboard-peserta">
-                            <i class="fa fa-dashboard"></i> <span>Dashboard</span>
-                        </a>
-                    </li>
-                    <li class="treeview">
-                        <a href="#">
-                            <i class="fa fa-list-ul"></i> <span>Konferensi</span>
-                            <span class="pull-right-container">
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </span>
-                        </a>
-                        <ul class="treeview-menu">
+                        <li>
+                            <a href="<?php echo $base_url; ?>/index.php?p=dashboard-peserta">
+                                <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-list-ul"></i> <span>Konferensi</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
 
-                            <li>
-                                <a href="<?php echo $base_url; ?>/index.php?p=konferensi">
-                                    <i class="fa fa-check"></i> <span>Pilih Konferensi</span>
-                                </a>
-                            </li>
+                                <li>
+                                    <a href="<?php echo $base_url; ?>/index.php?p=konferensi">
+                                        <i class="fa fa-check"></i> <span>Pilih Konferensi</span>
+                                    </a>
+                                </li>
 
-                            <li>
-                                <a href="<?php echo $base_url; ?>/index.php?p=daftar-konferensi">
-                                    <i class="fa fa-bars"></i> <span>Daftar Konferensi</span>
-                                </a>
-                            </li>
+                                <li>
+                                    <a href="<?php echo $base_url; ?>/index.php?p=daftar-konferensi">
+                                        <i class="fa fa-bars"></i> <span>Daftar Konferensi</span>
+                                    </a>
+                                </li>
 
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="<?php echo $base_url; ?>/index.php?p=list-transfer">
-                            <i class="fa fa-credit-card"></i> <span>Bukti Transfer</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="<?php echo $base_url; ?>/index.php?p=edit-peserta">
-                            <i class="fa fa-user"></i> <span>Ubah Profil Pengguna</span>
-                        </a>
-                    </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="<?php echo $base_url; ?>/index.php?p=list-transfer">
+                                <i class="fa fa-credit-card"></i> <span>Bukti Transfer</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="<?php echo $base_url; ?>/index.php?p=edit-peserta">
+                                <i class="fa fa-user"></i> <span>Ubah Profil Pengguna</span>
+                            </a>
+                        </li>
 
-                    <li>
-                        <a href="../config/logout.php">
-                            <i class="fa fa-sign-out"></i> <span>Logout</span>
-                        </a>
-                    </li>
+                        <li>
+                            <a href="../config/logout.php">
+                                <i class="fa fa-sign-out"></i> <span>Logout</span>
+                            </a>
+                        </li>
                         <!-- CLOSE MODUL PESERTA -->
                     <?php
 

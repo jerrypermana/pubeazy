@@ -39,7 +39,7 @@ include "config/koneksi.php";
         </div>
         <!-- /.login-logo -->
         <div class="login-box-body">
-            <p class="login-box-msg">Sign in to start your session</p>
+            <p class="login-box-msg">LOGIN ADMINISTRATOR</p>
 
             <form method="POST" name='simpan' onSubmit='return validasi()' id="test">
                 <div class="form-group has-feedback">
@@ -112,47 +112,24 @@ include "config/koneksi.php";
                     $ketemu = mysqli_num_rows($login);
                     $r = mysqli_fetch_array($login);
 
-                    $query_presenter = mysqli_query($konek, "SELECT * FROM presenter WHERE email='$email' AND password='$password'");
-                    $tu = mysqli_fetch_array($query_presenter);
-                    $t = mysqli_num_rows($query_presenter);
+     
 
-                    $query_peserta = mysqli_query($konek, "SELECT * FROM peserta WHERE email='$email' AND password='$password'");
-                    $peserta = mysqli_fetch_array($query_peserta);
-                    $row_peserta = mysqli_num_rows($query_peserta);
-
-                    if ($t == 1) {
+                    if ($ketemu == 1) {
 
 
-
-                        $_SESSION['email'] = $tu['email'];
-                        $_SESSION['id_presenter'] = $tu['id_presenter'];
-                        $_SESSION['member_id'] = $tu['member_id'];
-                        $_SESSION['password'] = $tu['password'];
-                        $_SESSION['realname'] = $tu['realname'];
-                        $_SESSION['group_session'] = $tu['group_session'];
-
-                        if ($tu['afiliasi'] != NULL && $tu['afiliasi'] != '') {
-                            echo '<script>location.replace("pages/index.php?p=dashboard-presenter")</script>';
-                            
-                        } else{
-                            echo '<script>location.replace("pages/index.php?p=edit-presenter")</script>';
-                        }
-                    } elseif ($row_peserta == 1) {
-
-
-                        $_SESSION['email'] = $peserta['email'];
-                        $_SESSION['password'] = $peserta['password'];
-                        $_SESSION['realname'] = $peserta['realname'];
-                        $_SESSION['id_peserta'] = $peserta['id_peserta'];
-                        $_SESSION['group_session'] = $peserta['group_session'];
+                        $_SESSION['email'] = $r['email'];
+                        $_SESSION['admin_id'] = $r['admin_id'];
+                        $_SESSION['password'] = $r['password'];
+                        $_SESSION['realname'] = $r['realname'];
+                        $_SESSION['group_session'] = $r['group_session'];
 
 
 
-                        echo '<script>location.replace("pages/index.php?p=dashboard-peserta")</script>';
+                        echo '<script>location.replace("pages/index.php?p=dashboard")</script>';
                     } else {
 
                         echo '<script>alert("Login Gagal, Silahkan Masukkan Password dan email dengan benar")
-				location.replace("index.php?p=login")</script>';
+				location.replace("index.php?p=login-admin")</script>';
                     }
                 }
             }

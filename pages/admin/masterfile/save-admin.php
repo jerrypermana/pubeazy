@@ -1,7 +1,7 @@
 <?php
 
 if (isset($_POST['submit'])) {
-$username        = $_POST['username'];
+$email        = $_POST['email'];
 $realname        = $_POST['realname'];
 $password        =  md5($_POST['password']);
 $group           = 'admin';
@@ -11,8 +11,8 @@ $group           = 'admin';
 
 
 
-$query  = mysqli_query($konek, "INSERT INTO login (username, realname, password, group_session)
-        VALUES('$username','$realname','$password','$group')");
+$query  = mysqli_query($konek, "INSERT INTO login (email, realname, password, group_session)
+        VALUES('$email','$realname','$password','$group')");
 
 if ($query) {
     echo '<script>alert("Berhasil Menambahkan Admin")

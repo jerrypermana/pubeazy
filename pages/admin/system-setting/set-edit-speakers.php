@@ -78,6 +78,7 @@ if ($_SESSION['group_session'] == 'admin') {
 
                                 <div class="col-sm-8">
                                     <input type="text" name="speaker_name" id='speaker_name' class="form-control" value='<?php echo $row['speaker_name']; ?>' required >
+                                    <input type="hidden" name="speaker_id" id='speaker_id' class="form-control" value='<?php echo $row['speaker_id']; ?>'>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -135,6 +136,7 @@ if ($_SESSION['group_session'] == 'admin') {
         <?php
         if (isset($_POST['submit'])) {
 
+            $speaker_id       = $_POST['speaker_id'];
             $speaker_name       = $_POST['speaker_name'];
             $institution        = $_POST['institution'];
             $about_speaker      = $_POST['about_speaker'];
@@ -159,16 +161,25 @@ if ($_SESSION['group_session'] == 'admin') {
                 if ($ukuran < 1285760) {
                     move_uploaded_file($file_tmp, '../files/speakers/' . $nama_file);
 
-                    $query_speaker  = "INSERT INTO speakers (speaker_name, institution,about_speaker,sequance, image_speaker, input_date, last_update)
-                                        VALUES('$speaker_name', '$institution','$about_speaker','$sequance', '$nama_file', '$input_date', '$last_update')";
+                    $query_speaker  = "UPDATE speakers SET speaker_name='$speaker_name', 
+                    institution= '$institution',
+                    about_speaker='$about_speaker',
+                    sequance='$sequance', 
+                    image_speaker='$nama_file', 
+                    last_update='$last_update'
+                    WHERE speaker_id='$speaker_id'";
+
+
+
+                                       
 
                     //echo $query_speaker;
                     $insert_speaker = mysqli_query($konek, $query_speaker);
 
                     if ($insert_speaker) {
-                        echo '<script>alert("Speakers Berhasil di Tambahkan")</script>';
+                        echo '<script>alert("Speakers Berhasil di Perbaharui")</script>';
                     } else {
-                        echo '<script>alert("Speakers Gagal di Tambahkan")</script>';
+                        echo '<script>alert("Speakers Gagal di Perbaharui")</script>';
                     }
                 } else {
                     echo '<script>alert("Ukuran File Terlalu Besar")</script>';

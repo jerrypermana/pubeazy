@@ -1,7 +1,5 @@
 <?php
-$konek=mysqli_connect('localhost', 'root','','conference');
+$konek=mysqli_connect('localhost', 'root','','kresnanu_pubeazy');
 
-// translate these
-	$months = array('January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December');
-	$headings = array('Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday');
+
 ?>

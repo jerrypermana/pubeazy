@@ -77,9 +77,15 @@ if (isset($_GET["p"])) {
     include 'admin/reporting/rep-presenter.php';
   } elseif ($id == "rep-peserta") {
     include 'admin/reporting/rep-peserta.php';
-  }
+  }//MODUL REVIEWER//
+  elseif ($id == "list-reviewer") {
+    include 'admin/reviewer/list-reviewer.php';
+  } elseif ($id == "add-reviewer") {
+    include 'admin/reviewer/add-reviewer.php';
+  }elseif($id == "edit-reviewer") {
+    include 'admin/reviewer/edit-reviewer.php';
   //ADMIN MASTER FILE//
-  elseif ($id == "hapus") {
+  }elseif ($id == "hapus") {
     include 'admin/paper/hapus.php';
   }
   //ADMIN SYSTEM SETTING//
@@ -133,7 +139,14 @@ if (isset($_GET["p"])) {
     include 'peserta/konferensi.php';
   } elseif ($id == "daftar-konferensi") {
     include 'peserta/daftar-konferensi.php';
-  } else {
+  } //START MODUL REVIEWER
+  elseif ($id == "dashboard-reviewer") {
+    include 'reviewer/dashboard-reviewer.php';
+  } 
+  
+  
+  
+  else {
     include 'index.php';
   }
 }

@@ -22,7 +22,7 @@ WHERE tp.transfer_id='$transfer_id'";
     $row = mysqli_fetch_array($hasil);
     $hitung = mysqli_num_rows($hasil);
 
-    $tanggal_conf = date('d-m-Y', strtotime($row['tanggal']));
+    $tanggal_conf = date('d-m-Y', strtotime($row['start_date']));
 
     if ($hitung == 0) {
         echo '<script>alert("Paper Tidak Di temukan")
@@ -182,7 +182,7 @@ WHERE tp.transfer_id='$transfer_id'";
                                 if (isset($_POST['submit'])) {
 
                                     $nama               = ucwords($_POST['nama_transfer']);
-                                    $username           = $_POST['username'];
+                                    // $username           = $_POST['username'];
                                     $tgl_transfer       = $_POST['tgl_transfer'];
                                     $jumlah_transfer    = $_POST['biaya'];
                                     $kode_bank          = $_POST['kode_bank'];

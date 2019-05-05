@@ -34,11 +34,11 @@ elseif (isset($_GET['bankID'])) {
 				location.replace("' . $base_url . '/index.php?p=mst-accountbank)</script>';
     }
 }
-elseif (isset($_GET['adminID'])) {
-    $adminID = $_GET['adminID'];
+elseif (isset($_GET['admin_id'])) {
+    $admin_id = $_GET['admin_id'];
 
 
-    $hapus_admin         = mysqli_query($konek, "delete from login where username='$adminID'");
+    $hapus_admin         = mysqli_query($konek, "delete from login where admin_id='$admin_id'");
 
 
 
@@ -115,6 +115,23 @@ elseif (isset($_GET['speakID'])) {
   } else {
       echo '<script>alert("Data Gagal Di Hapus")
       location.replace("' . $base_url . '/index.php?p=set-keynote-speakers)</script>';
+  }
+}
+
+elseif (isset($_GET['reviewer_id'])) {
+  $reviewer_id = $_GET['reviewer_id'];
+
+  $query = "delete from reviewer where reviewer_id='$reviewer_id'";
+  $hapus_review       = mysqli_query($konek,$query);
+
+
+ 
+  if ($hapus_review) {
+      echo '<script>alert("Data Berhasil Di Hapus")
+      location.replace("' . $base_url . '/index.php?p=list-reviewer")</script>';
+  } else {
+      echo '<script>alert("Data Gagal Di Hapus")
+      location.replace("' . $base_url . '/index.php?p=list-reviewer)</script>';
   }
 }
 ?>

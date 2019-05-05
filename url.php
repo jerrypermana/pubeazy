@@ -24,7 +24,11 @@ if (isset($_GET["p"])) {
     // START LOGIN // 
     elseif ($id == "login") {
         include 'login.php';
-    } else {
+    } elseif ($id == "login-reviewer") {
+        include 'login-reviewer.php';
+    } elseif ($id == "login-admin") {
+        include 'login-admin.php';
+    }else {
         include 'index.php';
     }
 }

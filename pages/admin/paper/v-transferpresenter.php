@@ -1,5 +1,5 @@
 <?php
-if ($_SESSION['group_session'] == 'admin') {
+if ($_SESSION['group_session'] == 'admin' || $_SESSION['group_session'] == 'reviewer') {
     ?>
     <!-- Content Header (Page header) -->
     <section class="content-header">
