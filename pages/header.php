@@ -52,6 +52,9 @@ if (!isset($_SESSION['email'])) {
 
     <!-- Google Font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+
+    <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
     <script src="../assets/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
     <script src="../assets/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
@@ -287,7 +290,7 @@ if (!isset($_SESSION['email'])) {
 
 =======
                                 </li> -->
-                                
+
 >>>>>>> Stashed changes
                             </ul>
                         </li>
