@@ -11,22 +11,23 @@ if ($_SESSION['group_session'] == 'peserta') {
 
     <?php
 
-    $id_peserta   = $_SESSION['id_peserta'];
-    $query      = "SELECT * FROM peserta WHERE id_peserta='$id_peserta'";
-    $hasil = mysqli_query($konek, $query);
-    $row = mysqli_fetch_array($hasil);
-    $hitung = mysqli_num_rows($hasil);
+    $id_peserta     = $_SESSION['id_peserta'];
+    $query          = "SELECT * FROM peserta WHERE id_peserta='$id_peserta'";
+    $hasil          = mysqli_query($konek, $query);
+    $row            = mysqli_fetch_array($hasil);
+    $hitung         = mysqli_num_rows($hasil);
 
     if ($hitung == 0) {
         echo '<script>alert("ID Anggota Tidak Di Temukan")
              location.replace("' . $base_url . '/index.php?p=dashboard-peserta")</script>';
     }
 
-    if ($row['image'] == 1){
-    	$foto = 'http://localhost/pubeazy/files/peserta/'.$data['image'].'';
+    if ($row['image'] == ""){
+         $foto = '../files/peserta/no_photo.png';
     } else {
-    	$foto = 'http://localhost/pubeazy/files/peserta/no_photo.png';
+         $foto = '../files/peserta/'.$row['image'].'';
     }
+
     ?>
     </br>
     <!-- Main content -->

@@ -58,13 +58,13 @@ LEFT JOIN account_bank as ab ON tp.kode_bank=ab.kode_bank
 WHERE md5(tp.transfer_id)='$transfer_id'";
 $hasil = mysqli_query($konek, $query);
 $data = mysqli_fetch_array($hasil);
-$tanggal_conf = date('d-m-Y', strtotime($row['tanggal']));
-$tanggal_tf = date('d-m-Y', strtotime($row['tgl_transfer']));
+$tanggal_conf = date('d-m-Y', strtotime($data['tanggal']));
+$tanggal_tf = date('d-m-Y', strtotime($data['tgl_transfer']));
 
-if ($data['image'] == 1){
-	$foto = 'http://localhost/pubeazy/files/peserta/'.$data['image'].'';
+if ($data['image'] == ""){
+	$foto = '../files/peserta/no_photo.png';
 } else {
-	$foto = 'http://localhost/pubeazy/files/peserta/no_photo.png';
+	$foto = '../files/peserta/'.$data['image'].'';
 }
 
 // Set Document Information
@@ -86,98 +86,98 @@ $pdf->AddPage();
 $pdf->SetFont('quicksandmedium', 'B', 10);
 $pdf->SetY(35);
 
-// if ($data['transfer_id'] == md5($transfer_id) ){
-// 	$body = '
-// 	<table cellpadding="1" cellspacing="1" border="0" style="text-align:center;">
-// 		<tr style="text-align:left;">
-// 			<td width="28%">
-// 				<img src="'.$foto.'" border="0" height="200" width="160" align="top" />
-// 			</td>
-// 			<td width="72%">
-// 				<table cellpadding="1" cellspacing="6">
-// 					<tr>
-// 						<td width="30%">No. Anggota</td>
-// 						<td width="70%">: '.$data['member_id'].'</td>
-// 					</tr>
-// 					<tr>
-// 						<td width="30%">Nama Lengkap</td>
-// 						<td width="70%">: '.$data['realname'].'</td>
-// 					</tr>
-// 					<tr>
-// 						<td width="30%">Konferensi</td>
-// 						<td width="70%">: '.$data['nama_konferensi'].'</td>
-// 					</tr>
-// 					<tr>
-// 						<td width="30%">Penyelanggara</td>
-// 						<td width="70%">: '.$data['penyelenggara'].'</td>
-// 					</tr>
-// 					<tr>
-// 						<td width="30%">Ruang Konferensi</td>
-// 						<td width="70%">: '.$data['nama_ruang'].'</td>
-// 					</tr>
-// 					<tr>
-// 						<td width="30%">Tanggal Konferensi</td>
-// 						<td width="70%">: '.$tanggal_conf.'</td>
-// 					</tr>
-// 					<tr>
-// 						<td width="30%">No. Transaksi</td>
-// 						<td width="70%">: '.$data['transfer_id'].'</td>
-// 					</tr>
-// 					<tr>
-// 						<td width="30%">Paket Konferensi</td>
-// 						<td width="70%">: '.$data['nama_paket'].'</td>
-// 					</tr>
-// 				</table>
-// 			</td>
-// 		</tr>
-// 	</table>';
-// } else {
-// 	$body = '<h1>Data Tidak Ditemukan.</h1>';
-// }
-$body = '
-<table cellpadding="1" cellspacing="1" border="0" style="text-align:center;">
-	<tr style="text-align:left;">
-		<td width="28%">
-			<img src="'.$foto.'" border="0" height="200" width="160" align="top" />
-		</td>
-		<td width="72%">
-			<table cellpadding="1" cellspacing="6">
-				<tr>
-					<td width="30%">No. Anggota</td>
-					<td width="70%">: '.$data['member_id'].'</td>
-				</tr>
-				<tr>
-					<td width="30%">Nama Lengkap</td>
-					<td width="70%">: '.$data['realname'].'</td>
-				</tr>
-				<tr>
-					<td width="30%">Konferensi</td>
-					<td width="70%">: '.$data['nama_konferensi'].'</td>
-				</tr>
-				<tr>
-					<td width="30%">Penyelanggara</td>
-					<td width="70%">: '.$data['penyelenggara'].'</td>
-				</tr>
-				<tr>
-					<td width="30%">Ruang Konferensi</td>
-					<td width="70%">: '.$data['nama_ruang'].'</td>
-				</tr>
-				<tr>
-					<td width="30%">Tanggal Konferensi</td>
-					<td width="70%">: '.$tanggal_conf.'</td>
-				</tr>
-				<tr>
-					<td width="30%">No. Transaksi</td>
-					<td width="70%">: '.$data['transfer_id'].'</td>
-				</tr>
-				<tr>
-					<td width="30%">Paket Konferensi</td>
-					<td width="70%">: '.$data['nama_paket'].'</td>
-				</tr>
-			</table>
-		</td>
-	</tr>
-</table>';
+if (md5($data['transfer_id']) == $transfer_id){
+	$body = '
+	<table cellpadding="1" cellspacing="1" border="0" style="text-align:center;">
+		<tr style="text-align:left;">
+			<td width="28%">
+				<img src="'.$foto.'" border="0" height="200" width="160" align="top" />
+			</td>
+			<td width="72%">
+				<table cellpadding="1" cellspacing="6">
+					<tr>
+						<td width="30%">No. Anggota</td>
+						<td width="70%">: '.$data['member_id'].'</td>
+					</tr>
+					<tr>
+						<td width="30%">Nama Lengkap</td>
+						<td width="70%">: '.$data['realname'].'</td>
+					</tr>
+					<tr>
+						<td width="30%">Konferensi</td>
+						<td width="70%">: '.$data['nama_konferensi'].'</td>
+					</tr>
+					<tr>
+						<td width="30%">Penyelanggara</td>
+						<td width="70%">: '.$data['penyelenggara'].'</td>
+					</tr>
+					<tr>
+						<td width="30%">Ruang Konferensi</td>
+						<td width="70%">: '.$data['nama_ruang'].'</td>
+					</tr>
+					<tr>
+						<td width="30%">Tanggal Konferensi</td>
+						<td width="70%">: '.$tanggal_conf.'</td>
+					</tr>
+					<tr>
+						<td width="30%">No. Transaksi</td>
+						<td width="70%">: '.$data['transfer_id'].'</td>
+					</tr>
+					<tr>
+						<td width="30%">Paket Konferensi</td>
+						<td width="70%">: '.$data['nama_paket'].'</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>';
+} else {
+	$body = '<h1>Data Tidak Ditemukan.</h1>';
+}
+// $body = '
+// <table cellpadding="1" cellspacing="1" border="0" style="text-align:center;">
+// 	<tr style="text-align:left;">
+// 		<td width="28%">
+// 			<img src="'.$foto.'" border="0" height="200" width="160" align="top" />
+// 		</td>
+// 		<td width="72%">
+// 			<table cellpadding="1" cellspacing="6">
+// 				<tr>
+// 					<td width="30%">No. Anggota</td>
+// 					<td width="70%">: '.$data['member_id'].'</td>
+// 				</tr>
+// 				<tr>
+// 					<td width="30%">Nama Lengkap</td>
+// 					<td width="70%">: '.$data['realname'].'</td>
+// 				</tr>
+// 				<tr>
+// 					<td width="30%">Konferensi</td>
+// 					<td width="70%">: '.$data['nama_konferensi'].'</td>
+// 				</tr>
+// 				<tr>
+// 					<td width="30%">Penyelanggara</td>
+// 					<td width="70%">: '.$data['penyelenggara'].'</td>
+// 				</tr>
+// 				<tr>
+// 					<td width="30%">Ruang Konferensi</td>
+// 					<td width="70%">: '.$data['nama_ruang'].'</td>
+// 				</tr>
+// 				<tr>
+// 					<td width="30%">Tanggal Konferensi</td>
+// 					<td width="70%">: '.$tanggal_conf.'</td>
+// 				</tr>
+// 				<tr>
+// 					<td width="30%">No. Transaksi</td>
+// 					<td width="70%">: '.$data['transfer_id'].'</td>
+// 				</tr>
+// 				<tr>
+// 					<td width="30%">Paket Konferensi</td>
+// 					<td width="70%">: '.$data['nama_paket'].'</td>
+// 				</tr>
+// 			</table>
+// 		</td>
+// 	</tr>
+// </table>';
 $pdf->writeHTML($body, true, false, true, false, '');
 
 // catatan

@@ -5,6 +5,24 @@ if (!isset($_SESSION['email'])) {
 
     header("Location: ../index.php");
 }
+
+$id_peserta   = $_SESSION['id_peserta'];
+$query      = "SELECT * FROM peserta WHERE id_peserta='$id_peserta'";
+$hasil = mysqli_query($konek, $query);
+$row = mysqli_fetch_array($hasil);
+$hitung = mysqli_num_rows($hasil);
+
+if ($hitung == 0) {
+    echo '<script>alert("ID Anggota Tidak Di Temukan")
+         location.replace("' . $base_url . '/index.php?p=dashboard-peserta")</script>';
+}
+
+if ($row['image'] == ""){
+     $foto = '../files/peserta/no_photo.png';
+} else {
+     $foto = '../files/peserta/'.$row['image'].'';
+}
+
 ?>
 <html>
 
@@ -99,7 +117,7 @@ if (!isset($_SESSION['email'])) {
                 <!-- Sidebar user panel -->
                 <div class="user-panel">
                     <div class="pull-left image">
-                        <img src="../assets/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                        <img src="<?php echo $foto; ?>" class="img-responsive img-circle" alt="User Image" style=" height: 45px; width: 45px; ">
                     </div>
                     <div class="pull-left info">
                         <p><?php echo $_SESSION['realname'] ?></p>
