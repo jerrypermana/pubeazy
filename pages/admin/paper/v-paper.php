@@ -12,7 +12,7 @@ if ($_SESSION['group_session'] == 'admin') {
     <div class="row">
         <!-- left column -->
         <div class="col-md-12">
-            
+
             <!-- general form elements -->
             <div class="box box-primary">
                 <div class="box-header with-border">
@@ -70,8 +70,8 @@ if ($_SESSION['group_session'] == 'admin') {
                         halign: 'center',
                         width: '20%',
                         formatter: function(value, row) {
-                            return "<a href='<?php echo $base_url; ?>/index.php?p=adm-edit-paper&idpaper=" + value + "''><button type='button' class='btn btn-primary'><i class='fa fa-check-square-o'> Verify</i></button></a><br><br><a href='<?php echo $base_url; ?>/index.php?p=hapus&paper_id=" + value + "'onClick=\"return confirm('Apakah anda yakin akan menghapus data item')\"><button type='button' class='btn btn-danger'><i class='fa fa-trash'> Delete</i></button></a>";
-                           
+                            return "<a href='<?php echo $base_url; ?>/index.php?p=adm-edit-paper&idpaper=" + value + "''><button type='button' class='btn btn-primary'><i class='fa fa-check-square-o'></i> Verify</button></a><br><br><a href='<?php echo $base_url; ?>/index.php?p=hapus&paper_id=" + value + "'onClick=\"return confirm('Apakah anda yakin akan menghapus data item')\"><button type='button' class='btn btn-danger'><i class='fa fa-trash'></i> Delete</button></a>";
+
                         }
                     },
                     {
@@ -136,7 +136,7 @@ if ($_SESSION['group_session'] == 'admin') {
                         width: '10%',
                         formatter: tglIndo
                     }
-                    
+
                 ],
                 onLoadSuccess: function(e) {
                     //				$('#total_record').html(e.total);
@@ -157,6 +157,6 @@ if ($_SESSION['group_session'] == 'admin') {
             return tanggal + "-" + bulan + "-" + tahun;
         }
     </script>
-    <?php 
+    <?php
 }
-?> 
+?>

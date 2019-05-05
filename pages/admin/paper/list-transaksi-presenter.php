@@ -71,7 +71,7 @@ if ($_SESSION['group_session'] == 'admin') {
                             halign: 'center',
                             width: '20%',
                             formatter: function(value, row) {
-                                return "<a href='<?php echo $base_url; ?>/index.php?p=v-transferpresenter&id=" + value + "''><button type='button' class='btn btn-primary'><i class='fa fa-check-square-o'> Verify</i></button></a><br><br><a href='<?php echo $base_url; ?>/index.php?p=hapus&idtrans=" + value + "'onClick=\"return confirm('Apakah anda yakin akan menghapus data item')\"><button type='button' class='btn btn-danger'><i class='fa fa-trash'> Delete</i></button></a>";
+                                return "<a href='<?php echo $base_url; ?>/index.php?p=v-transferpresenter&id=" + value + "''><button type='button' class='btn btn-primary'><i class='fa fa-check-square-o'></i> Verify</button></a><br><br><a href='<?php echo $base_url; ?>/index.php?p=hapus&idtrans=" + value + "'onClick=\"return confirm('Apakah anda yakin akan menghapus data item')\"><button type='button' class='btn btn-danger'><i class='fa fa-trash'></i> Delete</button></a>";
 
                             }
                         },
@@ -93,7 +93,7 @@ if ($_SESSION['group_session'] == 'admin') {
 
                             sortable: false
                         },
-                        
+
                         {
                             field: 'realname',
                             title: 'PRESENTER',
@@ -109,7 +109,7 @@ if ($_SESSION['group_session'] == 'admin') {
                             width: '30%',
                             sortable: false
                         },
-                      
+
 
                         {
                             field: 'v_transfer',
@@ -141,7 +141,7 @@ if ($_SESSION['group_session'] == 'admin') {
                             formatter: tglIndo
 
                         }
-                        
+
                     ],
                     onLoadSuccess: function(e) {
                         //				$('#total_record').html(e.total);

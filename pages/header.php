@@ -71,7 +71,7 @@ if (!isset($_SESSION['email'])) {
 
         <header class="main-header">
             <!-- Logo -->
-            <a href="../assets/index2.html" class="logo">
+            <a href="<?php echo $base_url; ?>/index.php?p=dashboard" class="logo">
                 <!-- mini logo for sidebar mini 50x50 pixels -->
                 <span class="logo-mini"><b>P</b>E</span>
                 <!-- logo for regular state and mobile devices -->
@@ -285,13 +285,13 @@ if (!isset($_SESSION['email'])) {
                                     <a href="<?php echo $base_url; ?>/index.php?p=setting-loa">
                                         <i class="fa fa-envelope"></i> <span>LOA</span>
                                     </a>
-<<<<<<< Updated upstream
+                                </li> -->
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-cog"></i> <span>Pengaturan Aplikasi</span>
+                                    </a>
                                 </li>
 
-=======
-                                </li> -->
-
->>>>>>> Stashed changes
                             </ul>
                         </li>
                         <!-- CLOSE SYSTEM SETTING -->

@@ -12,7 +12,7 @@ if ($_SESSION['group_session'] == 'admin') {
     <div class="row">
         <!-- left column -->
         <div class="col-md-12">
-         
+
             <!-- general form elements -->
             <div class="box box-primary">
                 <div class="box-header with-border">
@@ -64,7 +64,7 @@ if ($_SESSION['group_session'] == 'admin') {
                 url: 'data_api/api-list-v-akhir.php',
                 singleSelect: true,
                 columns: [
-                    
+
                     {
                         field: 'paper_id',
                         title: 'Verifikasi',
@@ -72,10 +72,10 @@ if ($_SESSION['group_session'] == 'admin') {
                         halign: 'center',
                         width: '20%',
                         formatter: function(value, row) {
-                            return "<a href='<?php echo $base_url; ?>/index.php?p=v-akhir&idpaper=" + value + "''><button type='button' class='btn btn-primary'><i class='fa fa-check-square-o'> Verify</i></button></a>";
+                            return "<a href='<?php echo $base_url; ?>/index.php?p=v-akhir&idpaper=" + value + "''><button type='button' class='btn btn-primary'><i class='fa fa-check-square-o'></i> Verify</button></a>";
 
                         }
-                    }, 
+                    },
                     {
                         field: 'member_id',
                         title: 'NO ANGGOTA',
@@ -106,7 +106,7 @@ if ($_SESSION['group_session'] == 'admin') {
                         width: '20%',
                         sortable: false
                     },
-                    
+
                     {
                         field: 'v_akhir',
                         title: 'VERIFIKASI AKHIR',
@@ -145,6 +145,6 @@ if ($_SESSION['group_session'] == 'admin') {
             return tanggal + "-" + bulan + "-" + tahun;
         }
     </script>
-    <?php 
+    <?php
 }
-?> 
+?>
