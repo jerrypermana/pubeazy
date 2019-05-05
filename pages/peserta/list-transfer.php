@@ -66,13 +66,13 @@ if ($_SESSION['group_session'] == 'peserta') {
 
                                     echo "<tbody>
                                             <tr>
-                                            <td align='center'><a href='$base_url/index.php?p=bukti-transfer-peserta&id=$row_transaksi[transfer_id]'><button type='button' class='btn btn-default'><i class='fa fa-upload'> Upload </i></button></a>
+                                            <td align='center'><a href='$base_url/index.php?p=bukti-transfer-peserta&id=$row_transaksi[transfer_id]'><button type='button' class='btn btn-default'><i class='fa fa-upload'></i> Upload</button></a>
                                                 <td>$row_transaksi[nama_konferensi]</td>
                                                 <td>$row_transaksi[penyelenggara] </td>
                                                 <td>$row_transaksi[nama_paket] </td>
-                                                                                             
+
                                                  <td>$status</td>
-                                               
+
                                               </td>
                                             </tr>
                                         </tbody>";

@@ -194,11 +194,10 @@ if ($_SESSION['group_session'] == 'peserta') {
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Koneferensi
+            Konferensi
         </h1>
 
     </section>
-    </br>
     <!-- Main content -->
     <section class="content">
         <div class="row">
